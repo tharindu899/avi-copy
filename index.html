@@ -3,12 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0f0f23">
+    <meta name="theme-color" content="#000000">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Aviator Signals">
-    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiQXZpYXRvciBTaWduYWxzIFBybyIsInNob3J0X25hbWUiOiJBdmlhdG9yIiwic3RhcnRfdXJsIjoiLyIsImRpc3BsYXkiOiJzdGFuZGFsb25lIiwiYmFja2dyb3VuZF9jb2xvciI6IiMwZjBmMjMiLCJ0aGVtZV9jb2xvciI6IiMwZjBmMjMiLCJpY29ucyI6W3sic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sLCUzQ3N2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxMDAgMTAwJyUzRSUzQ3RleHQgeT0nLjllbScgZm9udC1zaXplPSc5MCclM0UlRjAlOUYlOUElODAlM0MvdGV4dCUzRSUzQy9zdmclM0UiLCJzaXplcyI6IjE5MngxOTIiLCJ0eXBlIjoiaW1hZ2Uvc3ZnK3htbCJ9LHsic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sLCUzQ3N2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxMDAgMTAwJyUzRSUzQ3RleHQgeT0nLjllbScgZm9udC1zaXplPSc5MCclM0UlRjAlOUYlOUElODAlM0MvdGV4dCUzRSUzQy9zdmclM0UiLCJzaXplcyI6IjUxMng1MTIiLCJ0eXBlIjoiaW1hZ2Uvc3ZnK3htbCJ9XX0=">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🚀%3C/text%3E%3C/svg%3E">
     <title>Aviator Signals Pro</title>
     <style>
         * {
@@ -19,664 +16,614 @@
         }
 
         body {
-            background: #0f0f23;
+            background: #000000;
             min-height: 100vh;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            padding: 20px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 0;
             position: relative;
             overflow-x: hidden;
+            color: #fff;
         }
 
-        body::before {
-            content: '';
+        /* Animated Background */
+        .bg-animation {
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
+            width: 100%;
+            height: 100%;
             background: 
-                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+                radial-gradient(circle at 10% 20%, rgba(255, 0, 255, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 0, 0.05) 0%, transparent 50%);
             pointer-events: none;
             z-index: 0;
+            animation: bgPulse 10s ease-in-out infinite;
+        }
+
+        @keyframes bgPulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
         }
 
         .container {
-            max-width: 420px;
-            margin: 0 auto;
+            max-width: 100%;
             position: relative;
             z-index: 1;
         }
 
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        /* Top Bar */
+        .top-bar {
+            background: rgba(10, 10, 10, 0.8);
             backdrop-filter: blur(20px);
-            border-radius: 24px;
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            font-size: 32px;
+            filter: drop-shadow(0 0 10px rgba(255, 0, 255, 0.5));
+            animation: rotate360 20s linear infinite;
+        }
+
+        @keyframes rotate360 {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 900;
+            background: linear-gradient(90deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s linear infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #00ff00;
+            text-transform: uppercase;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: #00ff00;
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.7; }
+        }
+
+        /* Main Content */
+        .main-content {
             padding: 24px;
-            margin-bottom: 16px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Control Panel */
+        .control-panel {
+            background: linear-gradient(145deg, rgba(20, 0, 30, 0.6), rgba(0, 20, 30, 0.6));
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 28px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 0, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(255, 0, 255, 0.2);
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(180deg, #ff00ff, #00ffff);
+            border-radius: 4px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            gap: 10px;
+        }
+
+        .neon-input {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 0, 255, 0.3);
+            border-radius: 12px;
+            padding: 16px 18px;
+            font-size: 20px;
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 3px;
+            transition: all 0.3s;
+        }
+
+        .neon-input:focus {
+            outline: none;
+            border-color: #ff00ff;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .neon-input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .paste-button {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #ff00ff, #00ffff);
+            border: none;
+            border-radius: 12px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(255, 0, 255, 0.4);
+        }
+
+        .paste-button:active {
+            transform: scale(0.95);
+        }
+
+        .generate-button {
+            width: 100%;
+            background: linear-gradient(90deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+            background-size: 300% 100%;
+            border: none;
+            border-radius: 16px;
+            padding: 18px;
+            font-size: 16px;
+            font-weight: 900;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 30px rgba(255, 0, 255, 0.5);
+            animation: buttonGlow 3s linear infinite;
+            margin-top: 24px;
+        }
+
+        @keyframes buttonGlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 300% 50%; }
+        }
+
+        .generate-button:active {
+            transform: translateY(2px);
+        }
+
+        /* Results Display */
+        .results-display {
+            background: linear-gradient(145deg, rgba(0, 20, 30, 0.6), rgba(20, 0, 30, 0.6));
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 28px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 255, 255, 0.2);
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .stat-box {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 16px;
             text-align: center;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(99, 102, 241, 0.2);
         }
 
-        .header::before {
+        .stat-box::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
-            background-size: 200% 100%;
-            animation: shimmer 3s linear infinite;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            animation: scanline 2s linear infinite;
         }
 
-        @keyframes shimmer {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
+        @keyframes scanline {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
 
-        .header-icon {
-            font-size: 42px;
-            margin-bottom: 8px;
-            animation: float 3s ease-in-out infinite;
-            filter: drop-shadow(0 4px 8px rgba(99, 102, 241, 0.5));
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .header-title {
-            font-size: 24px;
-            font-weight: 900;
-            background: linear-gradient(135deg, #667eea 0%, #a78bfa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 4px;
-            letter-spacing: -0.5px;
-        }
-
-        .header-subtitle {
-            font-size: 13px;
-            color: #8b92a7;
-            font-weight: 500;
-        }
-
-        /* Install Banner */
-        .install-banner {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 16px;
-            padding: 14px 18px;
-            margin-bottom: 16px;
-            display: none;
-            align-items: center;
-            gap: 12px;
-            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .install-banner:active {
-            transform: scale(0.98);
-        }
-
-        .install-banner.show {
-            display: flex;
-        }
-
-        .install-icon {
-            font-size: 28px;
-        }
-
-        .install-text {
-            flex: 1;
-        }
-
-        .install-title {
-            font-size: 14px;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 2px;
-        }
-
-        .install-subtitle {
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .install-arrow {
-            font-size: 20px;
-            color: white;
-        }
-
-        /* Clock Card */
-        .clock-card {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 16px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-        }
-
-        .clock-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .clock-time {
-            font-size: 32px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #a78bfa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-family: 'Courier New', monospace;
-            letter-spacing: 1px;
-        }
-
-        .status-pill {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: white;
-            border-radius: 50%;
-            animation: blink 1.5s ease-in-out infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        .clock-date {
-            text-align: center;
-            color: #8b92a7;
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        /* Input Section */
-        .input-section {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 24px;
-            margin-bottom: 16px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-        }
-
-        .input-field {
-            margin-bottom: 20px;
-        }
-
-        .input-field:last-of-type {
-            margin-bottom: 24px;
-        }
-
-        .field-label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            font-weight: 700;
-            color: #d1d5db;
-            margin-bottom: 10px;
-        }
-
-        .field-label span {
-            font-size: 18px;
-        }
-
-        .input-row {
-            display: flex;
-            gap: 10px;
-        }
-
-        .time-field {
-            flex: 1;
-            background: #0a0a15;
-            border: 2px solid #2a2a3e;
-            border-radius: 14px;
-            padding: 14px 16px;
-            font-size: 18px;
-            font-family: 'Courier New', monospace;
-            font-weight: 700;
-            color: #fff;
-            letter-spacing: 2px;
-            transition: all 0.3s;
-        }
-
-        .time-field:focus {
-            outline: none;
-            border-color: #667eea;
-            background: #12121f;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
-        }
-
-        .time-field::placeholder {
-            color: #4a4a5e;
-        }
-
-        .paste-btn {
-            width: 52px;
-            height: 52px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            border-radius: 14px;
-            font-size: 22px;
-            cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .paste-btn:active {
-            transform: scale(0.95);
-        }
-
-        .count-field {
-            width: 100%;
-            background: #0a0a15;
-            border: 2px solid #2a2a3e;
-            border-radius: 14px;
-            padding: 14px 16px;
-            font-size: 18px;
-            font-family: 'Courier New', monospace;
-            font-weight: 700;
-            color: #fff;
-            transition: all 0.3s;
-        }
-
-        .count-field:focus {
-            outline: none;
-            border-color: #667eea;
-            background: #12121f;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
-        }
-
-        .generate-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            border-radius: 16px;
-            padding: 16px;
-            font-size: 16px;
-            font-weight: 800;
-            color: white;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
-        }
-
-        .generate-btn:active {
-            transform: translateY(2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-        }
-
-        /* Results Section */
-        .results-section {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 24px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-
-        .stat-card {
-            background: #0a0a15;
-            border: 1px solid #2a2a3e;
-            border-radius: 14px;
-            padding: 16px;
-            text-align: center;
-        }
-
-        .stat-title {
-            font-size: 11px;
-            color: #8b92a7;
+        .stat-label {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.5);
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 8px;
         }
 
-        .stat-number {
+        .stat-value {
             font-size: 24px;
             font-weight: 900;
-            background: linear-gradient(135deg, #667eea 0%, #a78bfa 100%);
+            background: linear-gradient(135deg, #00ffff, #ffff00);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             font-family: 'Courier New', monospace;
         }
 
-        .results-title {
-            font-size: 15px;
-            font-weight: 800;
-            color: #d1d5db;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .results-title span {
-            font-size: 20px;
-        }
-
-        .signals-container {
+        .signals-grid {
             display: flex;
             flex-direction: column;
             gap: 10px;
+            max-height: 450px;
+            overflow-y: auto;
+            padding-right: 8px;
         }
 
-        .signal-card {
-            background: #0a0a15;
-            border: 3px solid #2a2a3e;
+        .signals-grid::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .signals-grid::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        .signals-grid::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #ff00ff, #00ffff);
+            border-radius: 10px;
+        }
+
+        .signal-item {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
-            padding: 14px 16px;
+            padding: 14px 18px;
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 16px;
             cursor: pointer;
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
         }
 
-        .signal-card:active {
-            transform: scale(0.98);
+        .signal-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, var(--glow-color), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
-        .signal-card.selected {
-            background: rgba(102, 126, 234, 0.15);
-            border-width: 3px;
-            border-style: solid;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        .signal-item:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateX(4px);
         }
 
-        .signal-number {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
+        .signal-item.active {
+            background: rgba(255, 0, 255, 0.1);
+            border-color: var(--glow-color);
+            box-shadow: 0 0 20px var(--glow-color-alpha);
+        }
+
+        .signal-item.active::before {
+            opacity: 1;
+        }
+
+        .signal-index {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 900;
             font-size: 16px;
-            color: white;
+            color: #000;
             flex-shrink: 0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            background: var(--glow-color);
+            box-shadow: 0 0 15px var(--glow-color-alpha);
         }
 
-        .signal-number.blue {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-        }
-
-        .signal-number.purple {
-            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-        }
-
-        .signal-number.pink {
-            background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
-        }
-
-        .signal-time-text {
+        .signal-time {
             flex: 1;
-            font-size: 20px;
-            font-weight: 800;
+            font-size: 22px;
+            font-weight: 900;
             font-family: 'Courier New', monospace;
             color: #fff;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
-        .check-box {
+        .signal-check {
             width: 28px;
             height: 28px;
-            border: 3px solid #4a4a5e;
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s;
-            flex-shrink: 0;
         }
 
-        .signal-card.selected .check-box {
-            background: currentColor;
-            border-color: currentColor;
+        .signal-item.active .signal-check {
+            background: var(--glow-color);
+            border-color: var(--glow-color);
         }
 
-        .check-icon {
+        .check-mark {
             width: 16px;
             height: 16px;
-            border: 3px solid white;
+            border: 3px solid #000;
             border-top: none;
             border-left: none;
             transform: rotate(45deg) translateY(-2px);
             opacity: 0;
-            transition: opacity 0.2s;
+            transition: opacity 0.3s;
         }
 
-        .signal-card.selected .check-icon {
+        .signal-item.active .check-mark {
             opacity: 1;
         }
 
-        .empty-message {
+        .empty-state {
             text-align: center;
-            padding: 48px 20px;
-            color: #4a4a5e;
+            padding: 60px 20px;
         }
 
         .empty-icon {
-            font-size: 56px;
-            margin-bottom: 12px;
-            opacity: 0.5;
+            font-size: 64px;
+            margin-bottom: 16px;
+            opacity: 0.3;
+            animation: floatSlow 4s ease-in-out infinite;
+        }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
         }
 
         .empty-text {
             font-size: 14px;
+            color: rgba(255, 255, 255, 0.4);
             font-weight: 600;
         }
 
-        /* Toast */
-        .toast-notification {
+        /* Floating Clock */
+        .floating-clock {
             position: fixed;
-            bottom: 24px;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 0, 255, 0.3);
+            border-radius: 20px;
+            padding: 14px 20px;
+            box-shadow: 0 8px 32px rgba(255, 0, 255, 0.4);
+            z-index: 999;
+            animation: clockFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes clockFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .clock-time {
+            font-size: 20px;
+            font-weight: 900;
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .clock-date {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 90px;
             left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 14px 28px;
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
+            color: #000;
+            padding: 14px 32px;
             border-radius: 30px;
             font-size: 14px;
-            font-weight: 700;
+            font-weight: 900;
             opacity: 0;
             transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             z-index: 1000;
-            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.5);
+            box-shadow: 0 8px 32px rgba(255, 0, 255, 0.6);
         }
 
-        .toast-notification.show {
+        .toast.show {
             opacity: 1;
             transform: translateX(-50%) translateY(0);
         }
     </style>
 </head>
 <body>
+    <div class="bg-animation"></div>
+
     <div class="container">
-        <!-- Install Banner -->
-        <div class="install-banner" id="installBanner" onclick="installApp()">
-            <div class="install-icon">📱</div>
-            <div class="install-text">
-                <div class="install-title">Install App</div>
-                <div class="install-subtitle">Add to home screen for quick access</div>
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="logo-section">
+                <div class="logo-icon">✈️</div>
+                <div class="logo-text">AVIATOR SIGNALS</div>
             </div>
-            <div class="install-arrow">→</div>
+            <div class="status-badge">
+                <div class="pulse-dot"></div>
+                LIVE
+            </div>
         </div>
 
-        <!-- Header -->
-        <div class="header">
-            <div class="header-icon">🚀</div>
-            <div class="header-title">Aviator Signals Pro</div>
-            <div class="header-subtitle">Advanced Pattern Generator</div>
-        </div>
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Control Panel -->
+            <div class="control-panel">
+                <div class="section-title">Control Panel</div>
 
-        <!-- Clock -->
-        <div class="clock-card">
-            <div class="clock-row">
-                <div class="clock-time" id="clockDisplay">00:00:00</div>
-                <div class="status-pill">
-                    <div class="status-dot"></div>
-                    ACTIVE
-                </div>
-            </div>
-            <div class="clock-date" id="dateDisplay">Loading...</div>
-        </div>
-
-        <!-- Input Form -->
-        <div class="input-section">
-            <div class="input-field">
-                <div class="field-label">
-                    <span>⏰</span>
-                    <span>Start Time</span>
-                </div>
-                <div class="input-row">
-                    <input type="text" class="time-field" id="startTimeInput" placeholder="00:00:00" maxlength="8">
-                    <button class="paste-btn" onclick="handlePaste('startTimeInput')">📋</button>
-                </div>
-            </div>
-
-            <div class="input-field">
-                <div class="field-label">
-                    <span>🎯</span>
-                    <span>End Time</span>
-                </div>
-                <div class="input-row">
-                    <input type="text" class="time-field" id="endTimeInput" placeholder="00:00:00" maxlength="8">
-                    <button class="paste-btn" onclick="handlePaste('endTimeInput')">📋</button>
-                </div>
-            </div>
-
-            <div class="input-field">
-                <div class="field-label">
-                    <span>🔢</span>
-                    <span>Signal Count</span>
-                </div>
-                <input type="number" class="count-field" id="countInput" value="6" min="1" max="20">
-            </div>
-
-            <button class="generate-btn" onclick="createSignals()">⚡ Generate Signals</button>
-        </div>
-
-        <!-- Results -->
-        <div class="results-section">
-            <div id="statsArea" style="display: none;">
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-title">⏱️ Interval</div>
-                        <div class="stat-number" id="intervalDisplay">--</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-title">📊 Total</div>
-                        <div class="stat-number" id="totalDisplay">0</div>
+                <div class="input-group">
+                    <div class="input-label">🕐 Start Time</div>
+                    <div class="input-wrapper">
+                        <input type="text" class="neon-input" id="startTime" placeholder="00:00:00" maxlength="8">
+                        <button class="paste-button" onclick="handlePaste('startTime')">📋</button>
                     </div>
                 </div>
+
+                <div class="input-group">
+                    <div class="input-label">🎯 End Time</div>
+                    <div class="input-wrapper">
+                        <input type="text" class="neon-input" id="endTime" placeholder="00:00:00" maxlength="8">
+                        <button class="paste-button" onclick="handlePaste('endTime')">📋</button>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-label">🔢 Signal Count</div>
+                    <input type="number" class="neon-input" id="signalCount" value="10" min="1" max="20" style="width: 100%;">
+                </div>
+
+                <button class="generate-button" onclick="generateSignals()">⚡ Generate Signals</button>
             </div>
 
-            <div class="results-title">
-                <span>📡</span>
-                <span>Signal Output</span>
-            </div>
+            <!-- Results Display -->
+            <div class="results-display">
+                <div class="section-title">Signal Output</div>
 
-            <div class="signals-container" id="signalsContainer">
-                <div class="empty-message">
-                    <div class="empty-icon">🛸</div>
-                    <div class="empty-text">Ready to generate signals</div>
+                <div id="statsArea" style="display: none;">
+                    <div class="stats-row">
+                        <div class="stat-box">
+                            <div class="stat-label">⏱️ Interval</div>
+                            <div class="stat-value" id="intervalStat">--</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">📊 Total</div>
+                            <div class="stat-value" id="totalStat">0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="signals-grid" id="signalsGrid">
+                    <div class="empty-state">
+                        <div class="empty-icon">🚀</div>
+                        <div class="empty-text">Ready to generate signals</div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Floating Clock -->
+    <div class="floating-clock">
+        <div class="clock-time" id="clockTime">00:00:00</div>
+        <div class="clock-date" id="clockDate">Loading...</div>
+    </div>
+
     <!-- Toast -->
-    <div class="toast-notification" id="toastBox"></div>
+    <div class="toast" id="toast"></div>
 
     <script>
-        // PWA Install
-        let deferredPrompt;
-
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            document.getElementById('installBanner').classList.add('show');
-        });
-
-        async function installApp() {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                if (outcome === 'accepted') {
-                    showToast('✅ App installed successfully!');
-                    document.getElementById('installBanner').classList.remove('show');
-                }
-                deferredPrompt = null;
-            }
-        }
-
-        window.addEventListener('appinstalled', () => {
-            document.getElementById('installBanner').classList.remove('show');
-            showToast('✅ App installed! Check your home screen');
-        });
-
         // Update clock
         function updateClock() {
             const now = new Date();
             const h = String(now.getHours()).padStart(2, '0');
             const m = String(now.getMinutes()).padStart(2, '0');
             const s = String(now.getSeconds()).padStart(2, '0');
-            document.getElementById('clockDisplay').textContent = `${h}:${m}:${s}`;
+            document.getElementById('clockTime').textContent = `${h}:${m}:${s}`;
 
-            const opts = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
-            document.getElementById('dateDisplay').textContent = now.toLocaleDateString('en-US', opts);
+            const opts = { weekday: 'short', month: 'short', day: 'numeric' };
+            document.getElementById('clockDate').textContent = now.toLocaleDateString('en-US', opts);
         }
         setInterval(updateClock, 1000);
         updateClock();
 
         // Show toast
         function showToast(msg) {
-            const toast = document.getElementById('toastBox');
+            const toast = document.getElementById('toast');
             toast.textContent = msg;
             toast.classList.add('show');
             setTimeout(() => toast.classList.remove('show'), 2500);
@@ -685,17 +632,15 @@
         // Paste handler
         async function handlePaste(inputId) {
             const input = document.getElementById(inputId);
-            
             try {
                 if (navigator.clipboard && navigator.clipboard.readText) {
                     const text = await navigator.clipboard.readText();
                     const clean = text.trim();
-                    
                     if (/^\d{1,2}:\d{2}:\d{2}$/.test(clean)) {
                         input.value = clean;
-                        showToast('✅ Time pasted successfully');
+                        showToast('✅ Time pasted');
                     } else {
-                        showToast('⚠️ Invalid time format');
+                        showToast('⚠️ Invalid format');
                     }
                 } else {
                     input.focus();
@@ -707,15 +652,14 @@
             }
         }
 
-        // Handle input formatting
+        // Input formatting
         document.addEventListener('DOMContentLoaded', function() {
-            ['startTimeInput', 'endTimeInput'].forEach(id => {
+            ['startTime', 'endTime'].forEach(id => {
                 const input = document.getElementById(id);
                 
                 input.addEventListener('paste', function(e) {
                     e.preventDefault();
                     const text = (e.clipboardData || window.clipboardData).getData('text').trim();
-                    
                     if (/^\d{1,2}:\d{2}:\d{2}$/.test(text)) {
                         input.value = text;
                         showToast('✅ Pasted');
@@ -747,10 +691,10 @@
         }
 
         // Generate signals
-        function createSignals() {
-            const start = document.getElementById('startTimeInput').value;
-            const end = document.getElementById('endTimeInput').value;
-            const count = parseInt(document.getElementById('countInput').value);
+        function generateSignals() {
+            const start = document.getElementById('startTime').value;
+            const end = document.getElementById('endTime').value;
+            const count = parseInt(document.getElementById('signalCount').value);
 
             if (!start || !end) {
                 showToast('⚠️ Enter start and end times');
@@ -787,45 +731,38 @@
             const mins = Math.floor(interval / 60);
             const secs = Math.floor(interval % 60);
 
-            document.getElementById('intervalDisplay').textContent = `${mins}m ${secs}s`;
-            document.getElementById('totalDisplay').textContent = signals.length;
+            document.getElementById('intervalStat').textContent = `${mins}m ${secs}s`;
+            document.getElementById('totalStat').textContent = signals.length;
             document.getElementById('statsArea').style.display = 'block';
 
-            const colors = ['blue', 'purple', 'pink'];
-            const borderColors = {
-                blue: '#3b82f6',
-                purple: '#8b5cf6',
-                pink: '#ec4899'
-            };
+            const colors = [
+                { main: '#ff00ff', alpha: 'rgba(255, 0, 255, 0.3)' },
+                { main: '#00ffff', alpha: 'rgba(0, 255, 255, 0.3)' },
+                { main: '#ffff00', alpha: 'rgba(255, 255, 0, 0.3)' }
+            ];
             
-            const container = document.getElementById('signalsContainer');
+            const grid = document.getElementById('signalsGrid');
 
-            container.innerHTML = signals.map((time, idx) => {
-                const colorClass = colors[idx % 3];
-                const borderColor = borderColors[colorClass];
-                
+            grid.innerHTML = signals.map((time, idx) => {
+                const color = colors[idx % 3];
                 return `
-                    <div class="signal-card" id="signal-${idx}" onclick="toggleSelect(${idx}, '${borderColor}')" style="--border-color: ${borderColor};">
-                        <div class="signal-number ${colorClass}">${idx + 1}</div>
-                        <div class="signal-time-text">${time}</div>
-                        <div class="check-box" style="color: ${borderColor};">
-                            <div class="check-icon"></div>
+                    <div class="signal-item" id="signal-${idx}" 
+                         onclick="toggleSignal(${idx})" 
+                         style="--glow-color: ${color.main}; --glow-color-alpha: ${color.alpha};">
+                        <div class="signal-index">${idx + 1}</div>
+                        <div class="signal-time">${time}</div>
+                        <div class="signal-check">
+                            <div class="check-mark"></div>
                         </div>
                     </div>
                 `;
             }).join('');
         }
 
-        // Toggle selection
-        function toggleSelect(idx, color) {
-            const card = document.getElementById(`signal-${idx}`);
-            card.classList.toggle('selected');
-            
-            if (card.classList.contains('selected')) {
-                card.style.borderColor = color;
-            } else {
-                card.style.borderColor = '#2a2a3e';
-            }
+        // Toggle signal
+        function toggleSignal(idx) {
+            const signal = document.getElementById(`signal-${idx}`);
+            signal.classList.toggle('active');
         }
     </script>
 </body>
