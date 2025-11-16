@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0a0a0a">
-    <title>Aviator Signals 2025</title>
+    <meta name="theme-color" content="#0f0f23">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Aviator Signals">
+    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiQXZpYXRvciBTaWduYWxzIFBybyIsInNob3J0X25hbWUiOiJBdmlhdG9yIiwic3RhcnRfdXJsIjoiLyIsImRpc3BsYXkiOiJzdGFuZGFsb25lIiwiYmFja2dyb3VuZF9jb2xvciI6IiMwZjBmMjMiLCJ0aGVtZV9jb2xvciI6IiMwZjBmMjMiLCJpY29ucyI6W3sic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sLCUzQ3N2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxMDAgMTAwJyUzRSUzQ3RleHQgeT0nLjllbScgZm9udC1zaXplPSc5MCclM0UlRjAlOUYlOUElODAlM0MvdGV4dCUzRSUzQy9zdmclM0UiLCJzaXplcyI6IjE5MngxOTIiLCJ0eXBlIjoiaW1hZ2Uvc3ZnK3htbCJ9LHsic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sLCUzQ3N2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxMDAgMTAwJyUzRSUzQ3RleHQgeT0nLjllbScgZm9udC1zaXplPSc5MCclM0UlRjAlOUYlOUElODAlM0MvdGV4dCUzRSUzQy9zdmclM0UiLCJzaXplcyI6IjUxMng1MTIiLCJ0eXBlIjoiaW1hZ2Uvc3ZnK3htbCJ9XX0=">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🚀%3C/text%3E%3C/svg%3E">
+    <title>Aviator Signals Pro</title>
     <style>
         * {
             margin: 0;
@@ -14,353 +19,470 @@
         }
 
         body {
-            background: #0a0a0a;
-            color: #fff;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f0f23;
             min-height: 100vh;
-            padding: 12px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 20px;
+            position: relative;
             overflow-x: hidden;
         }
 
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
         .container {
-            max-width: 400px;
+            max-width: 420px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Header Section */
-        .header-card {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d1810 100%);
-            border: 2px solid #ff6b35;
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 12px;
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             text-align: center;
-            box-shadow: 0 8px 32px rgba(255, 107, 53, 0.3);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(99, 102, 241, 0.2);
         }
 
-        .app-title {
-            font-size: 18px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .header-icon {
+            font-size: 42px;
+            margin-bottom: 8px;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 4px 8px rgba(99, 102, 241, 0.5));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .header-title {
+            font-size: 24px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #a78bfa 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 6px;
-            letter-spacing: 1px;
+            margin-bottom: 4px;
+            letter-spacing: -0.5px;
         }
 
-        .app-subtitle {
+        .header-subtitle {
+            font-size: 13px;
+            color: #8b92a7;
+            font-weight: 500;
+        }
+
+        /* Install Banner */
+        .install-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            padding: 14px 18px;
+            margin-bottom: 16px;
+            display: none;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .install-banner:active {
+            transform: scale(0.98);
+        }
+
+        .install-banner.show {
+            display: flex;
+        }
+
+        .install-icon {
+            font-size: 28px;
+        }
+
+        .install-text {
+            flex: 1;
+        }
+
+        .install-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 2px;
+        }
+
+        .install-subtitle {
             font-size: 11px;
-            color: #999;
-            letter-spacing: 0.5px;
+            color: rgba(255, 255, 255, 0.8);
         }
 
-        /* Clock Section */
+        .install-arrow {
+            font-size: 20px;
+            color: white;
+        }
+
+        /* Clock Card */
         .clock-card {
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 12px 16px;
-            margin-bottom: 12px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .clock-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 12px;
         }
 
-        .time-display {
-            font-size: 22px;
-            font-weight: 700;
-            color: #ff6b35;
+        .clock-time {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             font-family: 'Courier New', monospace;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
 
-        .date-display {
-            font-size: 10px;
-            color: #666;
-            margin-top: 4px;
-        }
-
-        .status-badge {
-            background: #10b981;
-            color: #000;
-            padding: 4px 12px;
+        .status-pill {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 700;
             display: flex;
             align-items: center;
             gap: 6px;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
         }
 
-        .pulse-dot {
-            width: 6px;
-            height: 6px;
-            background: #000;
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: white;
             border-radius: 50%;
-            animation: pulse 1.5s infinite;
+            animation: blink 1.5s ease-in-out infinite;
         }
 
-        @keyframes pulse {
+        @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.3; }
         }
 
-        /* Input Card */
-        .input-card {
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 12px;
-        }
-
-        .input-group {
-            margin-bottom: 14px;
-        }
-
-        .input-group:last-of-type {
-            margin-bottom: 16px;
-        }
-
-        .input-label {
-            font-size: 12px;
-            color: #ff6b35;
+        .clock-date {
+            text-align: center;
+            color: #8b92a7;
+            font-size: 13px;
             font-weight: 600;
-            margin-bottom: 8px;
+        }
+
+        /* Input Section */
+        .input-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .input-field {
+            margin-bottom: 20px;
+        }
+
+        .input-field:last-of-type {
+            margin-bottom: 24px;
+        }
+
+        .field-label {
             display: flex;
             align-items: center;
-            gap: 6px;
-        }
-
-        .input-wrapper {
-            position: relative;
-            display: flex;
             gap: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #d1d5db;
+            margin-bottom: 10px;
         }
 
-        .time-input {
+        .field-label span {
+            font-size: 18px;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .time-field {
             flex: 1;
-            background: #0a0a0a;
-            border: 2px solid #2a2a2a;
-            border-radius: 10px;
-            padding: 12px 14px;
-            color: #fff;
-            font-size: 16px;
+            background: #0a0a15;
+            border: 2px solid #2a2a3e;
+            border-radius: 14px;
+            padding: 14px 16px;
+            font-size: 18px;
             font-family: 'Courier New', monospace;
-            font-weight: 600;
+            font-weight: 700;
+            color: #fff;
             letter-spacing: 2px;
             transition: all 0.3s;
         }
 
-        .time-input:focus {
+        .time-field:focus {
             outline: none;
-            border-color: #ff6b35;
-            background: #111;
+            border-color: #667eea;
+            background: #12121f;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
         }
 
-        .time-input::placeholder {
-            color: #444;
-            letter-spacing: 1px;
+        .time-field::placeholder {
+            color: #4a4a5e;
         }
 
-        .paste-button {
-            background: #ff6b35;
+        .paste-btn {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border: none;
-            border-radius: 10px;
-            width: 48px;
-            height: 48px;
+            border-radius: 14px;
+            font-size: 22px;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            cursor: pointer;
-            transition: all 0.2s;
-            flex-shrink: 0;
         }
 
-        .paste-button:active {
-            transform: scale(0.9);
-            background: #f7931e;
+        .paste-btn:active {
+            transform: scale(0.95);
         }
 
-        .count-input {
+        .count-field {
             width: 100%;
-            background: #0a0a0a;
-            border: 2px solid #2a2a2a;
-            border-radius: 10px;
-            padding: 12px 14px;
-            color: #fff;
-            font-size: 16px;
+            background: #0a0a15;
+            border: 2px solid #2a2a3e;
+            border-radius: 14px;
+            padding: 14px 16px;
+            font-size: 18px;
             font-family: 'Courier New', monospace;
-            font-weight: 600;
+            font-weight: 700;
+            color: #fff;
             transition: all 0.3s;
         }
 
-        .count-input:focus {
+        .count-field:focus {
             outline: none;
-            border-color: #ff6b35;
-            background: #111;
+            border-color: #667eea;
+            background: #12121f;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
         }
 
-        .generate-button {
+        .generate-btn {
             width: 100%;
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border: none;
-            border-radius: 12px;
-            padding: 14px;
-            color: #000;
-            font-size: 15px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
-        }
-
-        .generate-button:active {
-            transform: translateY(2px);
-            box-shadow: 0 2px 10px rgba(255, 107, 53, 0.4);
-        }
-
-        /* Results Card */
-        .results-card {
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 16px;
+            font-size: 16px;
+            font-weight: 800;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
         }
 
-        .stats-row {
+        .generate-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Results Section */
+        .results-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .stats-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 16px;
+            gap: 12px;
+            margin-bottom: 24px;
         }
 
-        .stat-box {
-            background: #0a0a0a;
-            border: 1px solid #2a2a2a;
-            border-radius: 10px;
-            padding: 12px;
+        .stat-card {
+            background: #0a0a15;
+            border: 1px solid #2a2a3e;
+            border-radius: 14px;
+            padding: 16px;
             text-align: center;
         }
 
-        .stat-label {
-            font-size: 10px;
-            color: #666;
+        .stat-title {
+            font-size: 11px;
+            color: #8b92a7;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
         }
 
-        .stat-value {
-            font-size: 18px;
-            font-weight: 700;
-            color: #ff6b35;
+        .stat-number {
+            font-size: 24px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             font-family: 'Courier New', monospace;
         }
 
-        .results-header {
-            font-size: 13px;
-            font-weight: 700;
-            color: #ff6b35;
-            margin-bottom: 12px;
+        .results-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: #d1d5db;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .signal-list {
+        .results-title span {
+            font-size: 20px;
+        }
+
+        .signals-container {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
 
-        .signal-item {
-            background: #0a0a0a;
-            border: 2px solid #2a2a2a;
-            border-radius: 10px;
-            padding: 10px 12px;
+        .signal-card {
+            background: #0a0a15;
+            border: 3px solid #2a2a3e;
+            border-radius: 16px;
+            padding: 14px 16px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            transition: all 0.3s;
+            gap: 14px;
             cursor: pointer;
+            transition: all 0.3s;
         }
 
-        .signal-item:active {
+        .signal-card:active {
             transform: scale(0.98);
         }
 
-        .signal-item.selected {
-            border-width: 2px;
+        .signal-card.selected {
+            background: rgba(102, 126, 234, 0.15);
+            border-width: 3px;
             border-style: solid;
-            background: rgba(255, 107, 53, 0.1);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
         }
 
-        .signal-badge {
-            width: 36px;
-            height: 36px;
+        .signal-number {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 16px;
+            color: white;
+            flex-shrink: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .signal-number.blue {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        }
+
+        .signal-number.purple {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        }
+
+        .signal-number.pink {
+            background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+        }
+
+        .signal-time-text {
+            flex: 1;
+            font-size: 20px;
+            font-weight: 800;
+            font-family: 'Courier New', monospace;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .check-box {
+            width: 28px;
+            height: 28px;
+            border: 3px solid #4a4a5e;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
-            font-size: 14px;
-            color: #000;
-            flex-shrink: 0;
-        }
-
-        .signal-badge.red {
-            background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
-        }
-
-        .signal-badge.yellow {
-            background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);
-        }
-
-        .signal-badge.orange {
-            background: linear-gradient(135deg, #ff8c00 0%, #ff6347 100%);
-        }
-
-        .signal-time {
-            flex: 1;
-            font-size: 18px;
-            font-weight: 700;
-            font-family: 'Courier New', monospace;
-            letter-spacing: 2px;
-            color: #fff;
-        }
-
-        .checkbox-wrapper {
-            width: 24px;
-            height: 24px;
-            flex-shrink: 0;
-        }
-
-        .custom-checkbox {
-            width: 24px;
-            height: 24px;
-            border: 2px solid #444;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
             transition: all 0.3s;
+            flex-shrink: 0;
         }
 
-        .signal-item.selected .custom-checkbox {
+        .signal-card.selected .check-box {
             background: currentColor;
             border-color: currentColor;
         }
 
-        .checkmark {
-            width: 14px;
-            height: 14px;
-            border: 2px solid #000;
+        .check-icon {
+            width: 16px;
+            height: 16px;
+            border: 3px solid white;
             border-top: none;
             border-left: none;
             transform: rotate(45deg) translateY(-2px);
@@ -368,45 +490,46 @@
             transition: opacity 0.2s;
         }
 
-        .signal-item.selected .checkmark {
+        .signal-card.selected .check-icon {
             opacity: 1;
         }
 
-        .empty-state {
+        .empty-message {
             text-align: center;
-            padding: 40px 20px;
-            color: #444;
+            padding: 48px 20px;
+            color: #4a4a5e;
         }
 
         .empty-icon {
-            font-size: 48px;
+            font-size: 56px;
             margin-bottom: 12px;
-            opacity: 0.3;
+            opacity: 0.5;
         }
 
         .empty-text {
-            font-size: 13px;
+            font-size: 14px;
+            font-weight: 600;
         }
 
-        /* Toast Notification */
-        .toast {
+        /* Toast */
+        .toast-notification {
             position: fixed;
-            bottom: 20px;
+            bottom: 24px;
             left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background: #ff6b35;
-            color: #000;
-            padding: 12px 24px;
-            border-radius: 25px;
-            font-size: 13px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-size: 14px;
             font-weight: 700;
             opacity: 0;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.5);
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.5);
         }
 
-        .toast.show {
+        .toast-notification.show {
             opacity: 1;
             transform: translateX(-50%) translateY(0);
         }
@@ -414,123 +537,162 @@
 </head>
 <body>
     <div class="container">
+        <!-- Install Banner -->
+        <div class="install-banner" id="installBanner" onclick="installApp()">
+            <div class="install-icon">📱</div>
+            <div class="install-text">
+                <div class="install-title">Install App</div>
+                <div class="install-subtitle">Add to home screen for quick access</div>
+            </div>
+            <div class="install-arrow">→</div>
+        </div>
+
         <!-- Header -->
-        <div class="header-card">
-            <div class="app-title">✈️ AVIATOR SIGNALS</div>
-            <div class="app-subtitle">Pattern Generator • x2 x5 x10</div>
+        <div class="header">
+            <div class="header-icon">🚀</div>
+            <div class="header-title">Aviator Signals Pro</div>
+            <div class="header-subtitle">Advanced Pattern Generator</div>
         </div>
 
         <!-- Clock -->
         <div class="clock-card">
-            <div>
-                <div class="time-display" id="clock">00:00:00</div>
-                <div class="date-display" id="date">Loading...</div>
+            <div class="clock-row">
+                <div class="clock-time" id="clockDisplay">00:00:00</div>
+                <div class="status-pill">
+                    <div class="status-dot"></div>
+                    ACTIVE
+                </div>
             </div>
-            <div class="status-badge">
-                <div class="pulse-dot"></div>
-                LIVE
-            </div>
+            <div class="clock-date" id="dateDisplay">Loading...</div>
         </div>
 
         <!-- Input Form -->
-        <div class="input-card">
-            <div class="input-group">
-                <div class="input-label">
-                    🕐 Start Time
+        <div class="input-section">
+            <div class="input-field">
+                <div class="field-label">
+                    <span>⏰</span>
+                    <span>Start Time</span>
                 </div>
-                <div class="input-wrapper">
-                    <input type="text" class="time-input" id="startTime" placeholder="00:00:00" maxlength="8">
-                    <button class="paste-button" onclick="pasteTime('startTime')">📋</button>
-                </div>
-            </div>
-
-            <div class="input-group">
-                <div class="input-label">
-                    🎯 End Time
-                </div>
-                <div class="input-wrapper">
-                    <input type="text" class="time-input" id="endTime" placeholder="00:00:00" maxlength="8">
-                    <button class="paste-button" onclick="pasteTime('endTime')">📋</button>
+                <div class="input-row">
+                    <input type="text" class="time-field" id="startTimeInput" placeholder="00:00:00" maxlength="8">
+                    <button class="paste-btn" onclick="handlePaste('startTimeInput')">📋</button>
                 </div>
             </div>
 
-            <div class="input-group">
-                <div class="input-label">
-                    🔢 Number of Signals
+            <div class="input-field">
+                <div class="field-label">
+                    <span>🎯</span>
+                    <span>End Time</span>
                 </div>
-                <input type="number" class="count-input" id="signalCount" value="6" min="1" max="20">
+                <div class="input-row">
+                    <input type="text" class="time-field" id="endTimeInput" placeholder="00:00:00" maxlength="8">
+                    <button class="paste-btn" onclick="handlePaste('endTimeInput')">📋</button>
+                </div>
             </div>
 
-            <button class="generate-button" onclick="generateSignals()">⚡ Generate Signals</button>
+            <div class="input-field">
+                <div class="field-label">
+                    <span>🔢</span>
+                    <span>Signal Count</span>
+                </div>
+                <input type="number" class="count-field" id="countInput" value="6" min="1" max="20">
+            </div>
+
+            <button class="generate-btn" onclick="createSignals()">⚡ Generate Signals</button>
         </div>
 
         <!-- Results -->
-        <div class="results-card">
-            <div id="statsSection" style="display: none;">
-                <div class="stats-row">
-                    <div class="stat-box">
-                        <div class="stat-label">Interval</div>
-                        <div class="stat-value" id="intervalStat">--</div>
+        <div class="results-section">
+            <div id="statsArea" style="display: none;">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-title">⏱️ Interval</div>
+                        <div class="stat-number" id="intervalDisplay">--</div>
                     </div>
-                    <div class="stat-box">
-                        <div class="stat-label">Total</div>
-                        <div class="stat-value" id="totalStat">0</div>
+                    <div class="stat-card">
+                        <div class="stat-title">📊 Total</div>
+                        <div class="stat-number" id="totalDisplay">0</div>
                     </div>
                 </div>
             </div>
 
-            <div class="results-header">
-                📊 Generated Signals
+            <div class="results-title">
+                <span>📡</span>
+                <span>Signal Output</span>
             </div>
 
-            <div class="signal-list" id="signalList">
-                <div class="empty-state">
-                    <div class="empty-icon">🎮</div>
-                    <div class="empty-text">Generate signals to begin</div>
+            <div class="signals-container" id="signalsContainer">
+                <div class="empty-message">
+                    <div class="empty-icon">🛸</div>
+                    <div class="empty-text">Ready to generate signals</div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Toast -->
-    <div class="toast" id="toast"></div>
+    <div class="toast-notification" id="toastBox"></div>
 
     <script>
-        // Clock Update
+        // PWA Install
+        let deferredPrompt;
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('installBanner').classList.add('show');
+        });
+
+        async function installApp() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') {
+                    showToast('✅ App installed successfully!');
+                    document.getElementById('installBanner').classList.remove('show');
+                }
+                deferredPrompt = null;
+            }
+        }
+
+        window.addEventListener('appinstalled', () => {
+            document.getElementById('installBanner').classList.remove('show');
+            showToast('✅ App installed! Check your home screen');
+        });
+
+        // Update clock
         function updateClock() {
             const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+            const h = String(now.getHours()).padStart(2, '0');
+            const m = String(now.getMinutes()).padStart(2, '0');
+            const s = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('clockDisplay').textContent = `${h}:${m}:${s}`;
 
-            const options = { weekday: 'short', month: 'short', day: 'numeric' };
-            document.getElementById('date').textContent = now.toLocaleDateString('en-US', options);
+            const opts = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
+            document.getElementById('dateDisplay').textContent = now.toLocaleDateString('en-US', opts);
         }
         setInterval(updateClock, 1000);
         updateClock();
 
-        // Toast notification
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
+        // Show toast
+        function showToast(msg) {
+            const toast = document.getElementById('toastBox');
+            toast.textContent = msg;
             toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 2000);
+            setTimeout(() => toast.classList.remove('show'), 2500);
         }
 
-        // Paste functionality
-        async function pasteTime(inputId) {
+        // Paste handler
+        async function handlePaste(inputId) {
             const input = document.getElementById(inputId);
             
             try {
                 if (navigator.clipboard && navigator.clipboard.readText) {
                     const text = await navigator.clipboard.readText();
-                    const cleaned = text.trim();
+                    const clean = text.trim();
                     
-                    if (/^\d{1,2}:\d{2}:\d{2}$/.test(cleaned)) {
-                        input.value = cleaned;
+                    if (/^\d{1,2}:\d{2}:\d{2}$/.test(clean)) {
+                        input.value = clean;
                         showToast('✅ Time pasted successfully');
                     } else {
                         showToast('⚠️ Invalid time format');
@@ -545,9 +707,9 @@
             }
         }
 
-        // Handle manual paste
+        // Handle input formatting
         document.addEventListener('DOMContentLoaded', function() {
-            ['startTime', 'endTime'].forEach(id => {
+            ['startTimeInput', 'endTimeInput'].forEach(id => {
                 const input = document.getElementById(id);
                 
                 input.addEventListener('paste', function(e) {
@@ -556,116 +718,87 @@
                     
                     if (/^\d{1,2}:\d{2}:\d{2}$/.test(text)) {
                         input.value = text;
-                        showToast('✅ Time pasted');
+                        showToast('✅ Pasted');
                     } else {
                         showToast('⚠️ Invalid format');
                     }
                 });
 
                 input.addEventListener('input', function(e) {
-                    let value = e.target.value.replace(/[^\d]/g, '');
-                    if (value.length >= 2) {
-                        value = value.slice(0, 2) + ':' + value.slice(2);
-                    }
-                    if (value.length >= 5) {
-                        value = value.slice(0, 5) + ':' + value.slice(5);
-                    }
-                    e.target.value = value.slice(0, 8);
+                    let val = e.target.value.replace(/[^\d]/g, '');
+                    if (val.length >= 2) val = val.slice(0, 2) + ':' + val.slice(2);
+                    if (val.length >= 5) val = val.slice(0, 5) + ':' + val.slice(5);
+                    e.target.value = val.slice(0, 8);
                 });
             });
         });
 
-        // Parse time to seconds
-        function parseTime(timeStr) {
-            const [hours, minutes, seconds] = timeStr.split(':').map(Number);
-            return hours * 3600 + minutes * 60 + seconds;
+        // Time conversion
+        function timeToSeconds(timeStr) {
+            const [h, m, s] = timeStr.split(':').map(Number);
+            return h * 3600 + m * 60 + s;
         }
 
-        // Format seconds to time
-        function formatTime(totalSeconds) {
-            const hours = Math.floor(totalSeconds / 3600);
-            const minutes = Math.floor((totalSeconds % 3600) / 60);
-            const seconds = Math.floor(totalSeconds % 60);
-            return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        function secondsToTime(totalSec) {
+            const h = Math.floor(totalSec / 3600);
+            const m = Math.floor((totalSec % 3600) / 60);
+            const s = Math.floor(totalSec % 60);
+            return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
         }
 
         // Generate signals
-        function generateSignals() {
-            const startTime = document.getElementById('startTime').value;
-            const endTime = document.getElementById('endTime').value;
-            const count = parseInt(document.getElementById('signalCount').value);
+        function createSignals() {
+            const start = document.getElementById('startTimeInput').value;
+            const end = document.getElementById('endTimeInput').value;
+            const count = parseInt(document.getElementById('countInput').value);
 
-            if (!startTime || !endTime) {
+            if (!start || !end) {
                 showToast('⚠️ Enter start and end times');
                 return;
             }
 
-            if (!/^\d{1,2}:\d{2}:\d{2}$/.test(startTime) || !/^\d{1,2}:\d{2}:\d{2}$/.test(endTime)) {
+            if (!/^\d{1,2}:\d{2}:\d{2}$/.test(start) || !/^\d{1,2}:\d{2}:\d{2}$/.test(end)) {
                 showToast('⚠️ Invalid time format');
                 return;
             }
 
-            const startSeconds = parseTime(startTime);
-            const endSeconds = parseTime(endTime);
+            const startSec = timeToSeconds(start);
+            const endSec = timeToSeconds(end);
 
-            if (endSeconds <= startSeconds) {
-                showToast('⚠️ End time must be after start');
+            if (endSec <= startSec) {
+                showToast('⚠️ End must be after start');
                 return;
             }
 
-            const interval = endSeconds - startSeconds;
+            const interval = endSec - startSec;
             const signals = [];
 
             for (let i = 0; i < count; i++) {
-                const signalTime = startSeconds + (interval * i);
-                signals.push(formatTime(signalTime));
+                const time = startSec + (interval * i);
+                signals.push(secondsToTime(time));
             }
 
-            displaySignals(signals, interval);
+            renderSignals(signals, interval);
             showToast('✅ Signals generated!');
         }
 
-        // Display signals
-        function displaySignals(signals, interval) {
-            const minutes = Math.floor(interval / 60);
-            const seconds = Math.floor(interval % 60);
+        // Render signals
+        function renderSignals(signals, interval) {
+            const mins = Math.floor(interval / 60);
+            const secs = Math.floor(interval % 60);
 
-            document.getElementById('intervalStat').textContent = `${minutes}m ${seconds}s`;
-            document.getElementById('totalStat').textContent = signals.length;
-            document.getElementById('statsSection').style.display = 'block';
+            document.getElementById('intervalDisplay').textContent = `${mins}m ${secs}s`;
+            document.getElementById('totalDisplay').textContent = signals.length;
+            document.getElementById('statsArea').style.display = 'block';
 
-            const colors = ['red', 'yellow', 'orange'];
-            const signalList = document.getElementById('signalList');
-
-            signalList.innerHTML = signals.map((time, index) => {
-                const colorClass = colors[index % 3];
-                const borderColor = colorClass === 'red' ? '#ff4444' : colorClass === 'yellow' ? '#ffd700' : '#ff8c00';
-                
-                return `
-                    <div class="signal-item" id="signal-${index}" onclick="toggleSignal(${index}, '${borderColor}')" style="--border-color: ${borderColor};">
-                        <div class="signal-badge ${colorClass}">${index + 1}</div>
-                        <div class="signal-time">${time}</div>
-                        <div class="checkbox-wrapper">
-                            <div class="custom-checkbox" style="color: ${borderColor};">
-                                <div class="checkmark"></div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        // Toggle signal selection
-        function toggleSignal(index, color) {
-            const signal = document.getElementById(`signal-${index}`);
-            signal.classList.toggle('selected');
+            const colors = ['blue', 'purple', 'pink'];
+            const borderColors = {
+                blue: '#3b82f6',
+                purple: '#8b5cf6',
+                pink: '#ec4899'
+            };
             
-            if (signal.classList.contains('selected')) {
-                signal.style.borderColor = color;
-            } else {
-                signal.style.borderColor = '#2a2a2a';
-            }
-        }
-    </script>
-</body>
-</html>
+            const container = document.getElementById('signalsContainer');
+
+            container.innerHTML = signals.map((time, idx) => {
+                const colorClass = colors[idx
