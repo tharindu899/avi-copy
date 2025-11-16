@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>Aviator Signals 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            padding: 12px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* Header Section */
+        .header-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d1810 100%);
+            border: 2px solid #ff6b35;
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 12px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(255, 107, 53, 0.3);
+        }
+
+        .app-title {
+            font-size: 18px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+
+        .app-subtitle {
+            font-size: 11px;
+            color: #999;
+            letter-spacing: 0.5px;
+        }
+
+        /* Clock Section */
+        .clock-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .time-display {
+            font-size: 22px;
+            font-weight: 700;
+            color: #ff6b35;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+        }
+
+        .date-display {
+            font-size: 10px;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        .status-badge {
+            background: #10b981;
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pulse-dot {
+            width: 6px;
+            height: 6px;
+            background: #000;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Input Card */
+        .input-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .input-group {
+            margin-bottom: 14px;
+        }
+
+        .input-group:last-of-type {
+            margin-bottom: 16px;
+        }
+
+        .input-label {
+            font-size: 12px;
+            color: #ff6b35;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            gap: 8px;
+        }
+
+        .time-input {
+            flex: 1;
+            background: #0a0a0a;
+            border: 2px solid #2a2a2a;
+            border-radius: 10px;
+            padding: 12px 14px;
+            color: #fff;
+            font-size: 16px;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+        }
+
+        .time-input:focus {
+            outline: none;
+            border-color: #ff6b35;
+            background: #111;
+        }
+
+        .time-input::placeholder {
+            color: #444;
+            letter-spacing: 1px;
+        }
+
+        .paste-button {
+            background: #ff6b35;
+            border: none;
+            border-radius: 10px;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .paste-button:active {
+            transform: scale(0.9);
+            background: #f7931e;
+        }
+
+        .count-input {
+            width: 100%;
+            background: #0a0a0a;
+            border: 2px solid #2a2a2a;
+            border-radius: 10px;
+            padding: 12px 14px;
+            color: #fff;
+            font-size: 16px;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .count-input:focus {
+            outline: none;
+            border-color: #ff6b35;
+            background: #111;
+        }
+
+        .generate-button {
+            width: 100%;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            border: none;
+            border-radius: 12px;
+            padding: 14px;
+            color: #000;
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .generate-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 10px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Results Card */
+        .results-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .stat-box {
+            background: #0a0a0a;
+            border: 1px solid #2a2a2a;
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 10px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .stat-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ff6b35;
+            font-family: 'Courier New', monospace;
+        }
+
+        .results-header {
+            font-size: 13px;
+            font-weight: 700;
+            color: #ff6b35;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .signal-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .signal-item {
+            background: #0a0a0a;
+            border: 2px solid #2a2a2a;
+            border-radius: 10px;
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .signal-item:active {
+            transform: scale(0.98);
+        }
+
+        .signal-item.selected {
+            border-width: 2px;
+            border-style: solid;
+            background: rgba(255, 107, 53, 0.1);
+        }
+
+        .signal-badge {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            color: #000;
+            flex-shrink: 0;
+        }
+
+        .signal-badge.red {
+            background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
+        }
+
+        .signal-badge.yellow {
+            background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);
+        }
+
+        .signal-badge.orange {
+            background: linear-gradient(135deg, #ff8c00 0%, #ff6347 100%);
+        }
+
+        .signal-time {
+            flex: 1;
+            font-size: 18px;
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+
+        .checkbox-wrapper {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .custom-checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #444;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            transition: all 0.3s;
+        }
+
+        .signal-item.selected .custom-checkbox {
+            background: currentColor;
+            border-color: currentColor;
+        }
+
+        .checkmark {
+            width: 14px;
+            height: 14px;
+            border: 2px solid #000;
+            border-top: none;
+            border-left: none;
+            transform: rotate(45deg) translateY(-2px);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .signal-item.selected .checkmark {
+            opacity: 1;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #444;
+        }
+
+        .empty-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+            opacity: 0.3;
+        }
+
+        .empty-text {
+            font-size: 13px;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #ff6b35;
+            color: #000;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 700;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.5);
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header-card">
+            <div class="app-title">✈️ AVIATOR SIGNALS</div>
+            <div class="app-subtitle">Pattern Generator • x2 x5 x10</div>
+        </div>
+
+        <!-- Clock -->
+        <div class="clock-card">
+            <div>
+                <div class="time-display" id="clock">00:00:00</div>
+                <div class="date-display" id="date">Loading...</div>
+            </div>
+            <div class="status-badge">
+                <div class="pulse-dot"></div>
+                LIVE
+            </div>
+        </div>
+
+        <!-- Input Form -->
+        <div class="input-card">
+            <div class="input-group">
+                <div class="input-label">
+                    🕐 Start Time
+                </div>
+                <div class="input-wrapper">
+                    <input type="text" class="time-input" id="startTime" placeholder="00:00:00" maxlength="8">
+                    <button class="paste-button" onclick="pasteTime('startTime')">📋</button>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-label">
+                    🎯 End Time
+                </div>
+                <div class="input-wrapper">
+                    <input type="text" class="time-input" id="endTime" placeholder="00:00:00" maxlength="8">
+                    <button class="paste-button" onclick="pasteTime('endTime')">📋</button>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-label">
+                    🔢 Number of Signals
+                </div>
+                <input type="number" class="count-input" id="signalCount" value="6" min="1" max="20">
+            </div>
+
+            <button class="generate-button" onclick="generateSignals()">⚡ Generate Signals</button>
+        </div>
+
+        <!-- Results -->
+        <div class="results-card">
+            <div id="statsSection" style="display: none;">
+                <div class="stats-row">
+                    <div class="stat-box">
+                        <div class="stat-label">Interval</div>
+                        <div class="stat-value" id="intervalStat">--</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Total</div>
+                        <div class="stat-value" id="totalStat">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-header">
+                📊 Generated Signals
+            </div>
+
+            <div class="signal-list" id="signalList">
+                <div class="empty-state">
+                    <div class="empty-icon">🎮</div>
+                    <div class="empty-text">Generate signals to begin</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // Clock Update
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+
+            const options = { weekday: 'short', month: 'short', day: 'numeric' };
+            document.getElementById('date').textContent = now.toLocaleDateString('en-US', options);
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Toast notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+
+        // Paste functionality
+        async function pasteTime(inputId) {
+            const input = document.getElementById(inputId);
+            
+            try {
+                if (navigator.clipboard && navigator.clipboard.readText) {
+                    const text = await navigator.clipboard.readText();
+                    const cleaned = text.trim();
+                    
+                    if (/^\d{1,2}:\d{2}:\d{2}$/.test(cleaned)) {
+                        input.value = cleaned;
+                        showToast('✅ Time pasted successfully');
+                    } else {
+                        showToast('⚠️ Invalid time format');
+                    }
+                } else {
+                    input.focus();
+                    input.select();
+                }
+            } catch (err) {
+                input.focus();
+                input.select();
+            }
+        }
+
+        // Handle manual paste
+        document.addEventListener('DOMContentLoaded', function() {
+            ['startTime', 'endTime'].forEach(id => {
+                const input = document.getElementById(id);
+                
+                input.addEventListener('paste', function(e) {
+                    e.preventDefault();
+                    const text = (e.clipboardData || window.clipboardData).getData('text').trim();
+                    
+                    if (/^\d{1,2}:\d{2}:\d{2}$/.test(text)) {
+                        input.value = text;
+                        showToast('✅ Time pasted');
+                    } else {
+                        showToast('⚠️ Invalid format');
+                    }
+                });
+
+                input.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/[^\d]/g, '');
+                    if (value.length >= 2) {
+                        value = value.slice(0, 2) + ':' + value.slice(2);
+                    }
+                    if (value.length >= 5) {
+                        value = value.slice(0, 5) + ':' + value.slice(5);
+                    }
+                    e.target.value = value.slice(0, 8);
+                });
+            });
+        });
+
+        // Parse time to seconds
+        function parseTime(timeStr) {
+            const [hours, minutes, seconds] = timeStr.split(':').map(Number);
+            return hours * 3600 + minutes * 60 + seconds;
+        }
+
+        // Format seconds to time
+        function formatTime(totalSeconds) {
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = Math.floor(totalSeconds % 60);
+            return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        // Generate signals
+        function generateSignals() {
+            const startTime = document.getElementById('startTime').value;
+            const endTime = document.getElementById('endTime').value;
+            const count = parseInt(document.getElementById('signalCount').value);
+
+            if (!startTime || !endTime) {
+                showToast('⚠️ Enter start and end times');
+                return;
+            }
+
+            if (!/^\d{1,2}:\d{2}:\d{2}$/.test(startTime) || !/^\d{1,2}:\d{2}:\d{2}$/.test(endTime)) {
+                showToast('⚠️ Invalid time format');
+                return;
+            }
+
+            const startSeconds = parseTime(startTime);
+            const endSeconds = parseTime(endTime);
+
+            if (endSeconds <= startSeconds) {
+                showToast('⚠️ End time must be after start');
+                return;
+            }
+
+            const interval = endSeconds - startSeconds;
+            const signals = [];
+
+            for (let i = 0; i < count; i++) {
+                const signalTime = startSeconds + (interval * i);
+                signals.push(formatTime(signalTime));
+            }
+
+            displaySignals(signals, interval);
+            showToast('✅ Signals generated!');
+        }
+
+        // Display signals
+        function displaySignals(signals, interval) {
+            const minutes = Math.floor(interval / 60);
+            const seconds = Math.floor(interval % 60);
+
+            document.getElementById('intervalStat').textContent = `${minutes}m ${seconds}s`;
+            document.getElementById('totalStat').textContent = signals.length;
+            document.getElementById('statsSection').style.display = 'block';
+
+            const colors = ['red', 'yellow', 'orange'];
+            const signalList = document.getElementById('signalList');
+
+            signalList.innerHTML = signals.map((time, index) => {
+                const colorClass = colors[index % 3];
+                const borderColor = colorClass === 'red' ? '#ff4444' : colorClass === 'yellow' ? '#ffd700' : '#ff8c00';
+                
+                return `
+                    <div class="signal-item" id="signal-${index}" onclick="toggleSignal(${index}, '${borderColor}')" style="--border-color: ${borderColor};">
+                        <div class="signal-badge ${colorClass}">${index + 1}</div>
+                        <div class="signal-time">${time}</div>
+                        <div class="checkbox-wrapper">
+                            <div class="custom-checkbox" style="color: ${borderColor};">
+                                <div class="checkmark"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Toggle signal selection
+        function toggleSignal(index, color) {
+            const signal = document.getElementById(`signal-${index}`);
+            signal.classList.toggle('selected');
+            
+            if (signal.classList.contains('selected')) {
+                signal.style.borderColor = color;
+            } else {
+                signal.style.borderColor = '#2a2a2a';
+            }
+        }
+    </script>
+</body>
+</html>
