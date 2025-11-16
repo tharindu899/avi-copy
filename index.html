@@ -801,4 +801,32 @@
             const container = document.getElementById('signalsContainer');
 
             container.innerHTML = signals.map((time, idx) => {
-                const colorClass = colors[idx
+                const colorClass = colors[idx % 3];
+                const borderColor = borderColors[colorClass];
+                
+                return `
+                    <div class="signal-card" id="signal-${idx}" onclick="toggleSelect(${idx}, '${borderColor}')" style="--border-color: ${borderColor};">
+                        <div class="signal-number ${colorClass}">${idx + 1}</div>
+                        <div class="signal-time-text">${time}</div>
+                        <div class="check-box" style="color: ${borderColor};">
+                            <div class="check-icon"></div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Toggle selection
+        function toggleSelect(idx, color) {
+            const card = document.getElementById(`signal-${idx}`);
+            card.classList.toggle('selected');
+            
+            if (card.classList.contains('selected')) {
+                card.style.borderColor = color;
+            } else {
+                card.style.borderColor = '#2a2a3e';
+            }
+        }
+    </script>
+</body>
+</html>
