@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#0a0e27">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Aviator Signals Pro</title>
@@ -16,34 +16,34 @@
         }
 
         body {
-            background: #000000;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
             min-height: 100vh;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 0;
             position: relative;
             overflow-x: hidden;
             color: #fff;
         }
 
-        /* Animated Background */
+        /* Grid Background */
         .bg-animation {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(circle at 10% 20%, rgba(255, 0, 255, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(255, 255, 0, 0.05) 0%, transparent 50%);
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
             pointer-events: none;
             z-index: 0;
-            animation: bgPulse 10s ease-in-out infinite;
+            animation: gridMove 20s linear infinite;
         }
 
-        @keyframes bgPulse {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 1; }
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(40px, 40px); }
         }
 
         .container {
@@ -52,475 +52,508 @@
             z-index: 1;
         }
 
-        /* Top Bar */
-        .top-bar {
-            background: rgba(10, 10, 10, 0.8);
+        /* Header */
+        .header {
+            background: rgba(15, 20, 45, 0.9);
             backdrop-filter: blur(20px);
-            padding: 20px 24px;
+            padding: 24px 28px;
+            border-bottom: 2px solid rgba(0, 255, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            max-width: 600px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .logo-section {
+        .brand {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
         }
 
-        .logo-icon {
-            font-size: 32px;
-            filter: drop-shadow(0 0 10px rgba(255, 0, 255, 0.5));
-            animation: rotate360 20s linear infinite;
-        }
-
-        @keyframes rotate360 {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .logo-text {
-            font-size: 20px;
-            font-weight: 900;
-            background: linear-gradient(90deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
-            background-size: 200% 100%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientShift 3s linear infinite;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 200% 50%; }
-        }
-
-        .status-badge {
+        .brand-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            border-radius: 12px;
             display: flex;
             align-items: center;
-            gap: 6px;
-            background: rgba(0, 255, 0, 0.1);
-            border: 1px solid rgba(0, 255, 0, 0.3);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 700;
-            color: #00ff00;
-            text-transform: uppercase;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
+            animation: iconPulse 2s ease-in-out infinite;
         }
 
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
-            background: #00ff00;
-            border-radius: 50%;
-            animation: pulse 1.5s ease-in-out infinite;
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.3); opacity: 0.7; }
-        }
-
-        /* Main Content */
-        .main-content {
-            padding: 24px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Control Panel */
-        .control-panel {
-            background: linear-gradient(145deg, rgba(20, 0, 30, 0.6), rgba(0, 20, 30, 0.6));
-            backdrop-filter: blur(10px);
-            border-radius: 24px;
-            padding: 28px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255, 0, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(255, 0, 255, 0.2);
-        }
-
-        .section-title {
-            font-size: 14px;
+        .brand-title {
+            font-size: 22px;
             font-weight: 800;
-            color: rgba(255, 255, 255, 0.6);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .section-title::before {
-            content: '';
-            width: 4px;
-            height: 20px;
-            background: linear-gradient(180deg, #ff00ff, #00ffff);
-            border-radius: 4px;
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-        }
-
-        .input-label {
-            font-size: 12px;
-            font-weight: 700;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            color: #fff;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .input-wrapper {
-            position: relative;
+        .brand-subtitle {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 2px;
+        }
+
+        .status-indicator {
             display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 255, 136, 0.15);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            padding: 8px 16px;
+            border-radius: 25px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: #00ff88;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00ff88;
+            animation: statusPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes statusPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .status-text {
+            font-size: 12px;
+            font-weight: 700;
+            color: #00ff88;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 28px 24px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Card Style */
+        .card {
+            background: rgba(20, 30, 60, 0.6);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-header {
+            font-size: 13px;
+            font-weight: 800;
+            color: #00d4ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.2);
+            display: flex;
+            align-items: center;
             gap: 10px;
         }
 
-        .neon-input {
+        .card-icon {
+            font-size: 20px;
+        }
+
+        /* Input Groups */
+        .input-group {
+            margin-bottom: 24px;
+        }
+
+        .input-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 12px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .input-container {
+            display: flex;
+            gap: 12px;
+        }
+
+        .input-field {
             flex: 1;
-            background: rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(255, 0, 255, 0.3);
-            border-radius: 12px;
-            padding: 16px 18px;
+            background: rgba(10, 15, 35, 0.8);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 14px;
+            padding: 18px 20px;
             font-size: 20px;
             font-family: 'Courier New', monospace;
             font-weight: 700;
-            color: #fff;
-            letter-spacing: 3px;
+            color: #00d4ff;
+            letter-spacing: 2px;
             transition: all 0.3s;
+            text-align: center;
         }
 
-        .neon-input:focus {
+        .input-field:focus {
             outline: none;
-            border-color: #ff00ff;
-            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
-            background: rgba(0, 0, 0, 0.7);
+            border-color: #00d4ff;
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.3);
+            background: rgba(10, 15, 35, 1);
         }
 
-        .neon-input::placeholder {
-            color: rgba(255, 255, 255, 0.3);
+        .input-field::placeholder {
+            color: rgba(0, 212, 255, 0.3);
         }
 
-        .paste-button {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, #ff00ff, #00ffff);
+        .input-field[type="number"] {
+            font-size: 24px;
+        }
+
+        .paste-btn {
+            width: 58px;
+            height: 58px;
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
             border: none;
-            border-radius: 12px;
+            border-radius: 14px;
             font-size: 24px;
             cursor: pointer;
             transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 15px rgba(255, 0, 255, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
         }
 
-        .paste-button:active {
+        .paste-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .paste-btn:active {
             transform: scale(0.95);
         }
 
-        .generate-button {
+        /* Generate Button */
+        .generate-btn {
             width: 100%;
-            background: linear-gradient(90deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
-            background-size: 300% 100%;
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
             border: none;
             border-radius: 16px;
-            padding: 18px;
+            padding: 20px;
             font-size: 16px;
             font-weight: 900;
-            color: #000;
+            color: #fff;
             text-transform: uppercase;
             letter-spacing: 2px;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 8px 30px rgba(255, 0, 255, 0.5);
-            animation: buttonGlow 3s linear infinite;
-            margin-top: 24px;
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+            margin-top: 32px;
+            position: relative;
+            overflow: hidden;
         }
 
-        @keyframes buttonGlow {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 300% 50%; }
+        .generate-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
         }
 
-        .generate-button:active {
-            transform: translateY(2px);
+        .generate-btn:hover::before {
+            left: 100%;
         }
 
-        /* Results Display */
-        .results-display {
-            background: linear-gradient(145deg, rgba(0, 20, 30, 0.6), rgba(20, 0, 30, 0.6));
-            backdrop-filter: blur(10px);
-            border-radius: 24px;
-            padding: 28px;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 255, 255, 0.2);
+        .generate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 212, 255, 0.5);
         }
 
-        .stats-row {
+        .generate-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Stats */
+        .stats-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-bottom: 24px;
+            gap: 16px;
+            margin-bottom: 28px;
         }
 
-        .stat-box {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .stat-card {
+            background: rgba(10, 15, 35, 0.8);
+            border: 1px solid rgba(0, 212, 255, 0.2);
             border-radius: 16px;
-            padding: 16px;
+            padding: 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
 
-        .stat-box::before {
+        .stat-card::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #00ffff, transparent);
-            animation: scanline 2s linear infinite;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+            animation: shimmer 3s linear infinite;
         }
 
-        @keyframes scanline {
+        @keyframes shimmer {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
         }
 
         .stat-label {
-            font-size: 10px;
+            font-size: 11px;
             color: rgba(255, 255, 255, 0.5);
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .stat-value {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 900;
-            background: linear-gradient(135deg, #00ffff, #ffff00);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #00d4ff;
             font-family: 'Courier New', monospace;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
         }
 
-        .signals-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            max-height: 450px;
+        /* Signals List */
+        .signals-container {
+            max-height: 480px;
             overflow-y: auto;
             padding-right: 8px;
         }
 
-        .signals-grid::-webkit-scrollbar {
-            width: 8px;
+        .signals-container::-webkit-scrollbar {
+            width: 6px;
         }
 
-        .signals-grid::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.3);
+        .signals-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .signals-container::-webkit-scrollbar-thumb {
+            background: rgba(0, 212, 255, 0.3);
             border-radius: 10px;
         }
 
-        .signals-grid::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #ff00ff, #00ffff);
-            border-radius: 10px;
-        }
-
-        .signal-item {
-            background: rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 14px 18px;
+        .signal-card {
+            background: rgba(10, 15, 35, 0.4);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 12px;
+            padding: 12px 50px 12px 16px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
         }
 
-        .signal-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(180deg, transparent, var(--glow-color), transparent);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .signal-item:hover {
-            border-color: rgba(255, 255, 255, 0.3);
+        .signal-card:hover {
+            border-color: rgba(0, 212, 255, 0.5);
+            background: rgba(10, 15, 35, 0.6);
             transform: translateX(4px);
         }
 
-        .signal-item.active {
-            background: rgba(255, 0, 255, 0.1);
-            border-color: var(--glow-color);
-            box-shadow: 0 0 20px var(--glow-color-alpha);
+        .signal-card.checked {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: var(--signal-color);
+            box-shadow: 0 0 15px var(--signal-shadow);
         }
 
-        .signal-item.active::before {
-            opacity: 1;
-        }
-
-        .signal-index {
-            width: 42px;
-            height: 42px;
+        .signal-number {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--signal-color), rgba(0, 153, 255, 0.8));
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 900;
             font-size: 16px;
-            color: #000;
+            color: #fff;
             flex-shrink: 0;
-            background: var(--glow-color);
-            box-shadow: 0 0 15px var(--glow-color-alpha);
+            box-shadow: 0 2px 10px rgba(0, 212, 255, 0.3);
         }
 
         .signal-time {
             flex: 1;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 900;
             font-family: 'Courier New', monospace;
-            color: #fff;
+            color: #00d4ff;
             letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
-        .signal-check {
-            width: 28px;
-            height: 28px;
+        .signal-checkbox {
+            width: 24px;
+            height: 24px;
             border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 8px;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s;
+            flex-shrink: 0;
+            position: absolute;
+            right: 16px;
         }
 
-        .signal-item.active .signal-check {
-            background: var(--glow-color);
-            border-color: var(--glow-color);
+        .signal-card.checked .signal-checkbox {
+            background: var(--signal-color);
+            border-color: var(--signal-color);
         }
 
-        .check-mark {
-            width: 16px;
-            height: 16px;
-            border: 3px solid #000;
+        .checkmark {
+            width: 12px;
+            height: 12px;
+            border: 2px solid #fff;
             border-top: none;
             border-left: none;
-            transform: rotate(45deg) translateY(-2px);
+            transform: rotate(45deg) translateY(-1px);
             opacity: 0;
-            transition: opacity 0.3s;
+            transition: all 0.3s;
         }
 
-        .signal-item.active .check-mark {
+        .signal-card.checked .checkmark {
             opacity: 1;
         }
 
+        /* Empty State */
         .empty-state {
             text-align: center;
-            padding: 60px 20px;
+            padding: 80px 20px;
         }
 
         .empty-icon {
-            font-size: 64px;
-            margin-bottom: 16px;
-            opacity: 0.3;
-            animation: floatSlow 4s ease-in-out infinite;
+            font-size: 72px;
+            margin-bottom: 20px;
+            opacity: 0.2;
+            animation: floatAnimation 4s ease-in-out infinite;
         }
 
-        @keyframes floatSlow {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
+        @keyframes floatAnimation {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
 
         .empty-text {
-            font-size: 14px;
+            font-size: 15px;
             color: rgba(255, 255, 255, 0.4);
             font-weight: 600;
         }
 
-        /* Floating Clock */
-        .floating-clock {
+        /* Clock Widget */
+        .clock-widget {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.8);
+            bottom: 24px;
+            right: 24px;
+            background: rgba(20, 30, 60, 0.95);
             backdrop-filter: blur(20px);
-            border: 2px solid rgba(255, 0, 255, 0.3);
-            border-radius: 20px;
-            padding: 14px 20px;
-            box-shadow: 0 8px 32px rgba(255, 0, 255, 0.4);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 18px;
+            padding: 16px 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
             z-index: 999;
-            animation: clockFloat 3s ease-in-out infinite;
-        }
-
-        @keyframes clockFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
         }
 
         .clock-time {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 900;
-            background: linear-gradient(90deg, #ff00ff, #00ffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #00d4ff;
             font-family: 'Courier New', monospace;
-            letter-spacing: 1px;
-            margin-bottom: 4px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+            margin-bottom: 6px;
         }
 
         .clock-date {
             font-size: 10px;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.5);
             font-weight: 700;
             text-align: center;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* Toast */
+        /* Toast Notification */
         .toast {
             position: fixed;
-            bottom: 90px;
+            bottom: 100px;
             left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: linear-gradient(90deg, #ff00ff, #00ffff);
-            color: #000;
-            padding: 14px 32px;
+            transform: translateX(-50%) translateY(120px);
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            color: #fff;
+            padding: 16px 36px;
             border-radius: 30px;
             font-size: 14px;
-            font-weight: 900;
+            font-weight: 800;
             opacity: 0;
             transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             z-index: 1000;
-            box-shadow: 0 8px 32px rgba(255, 0, 255, 0.6);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.5);
         }
 
         .toast.show {
             opacity: 1;
             transform: translateX(-50%) translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .header {
+                padding: 20px 20px;
+            }
+
+            .brand-title {
+                font-size: 18px;
+            }
+
+            .main-content {
+                padding: 20px 16px;
+            }
+
+            .card {
+                padding: 24px 20px;
+            }
+
+            .clock-widget {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 18px;
+            }
         }
     </style>
 </head>
@@ -528,131 +561,145 @@
     <div class="bg-animation"></div>
 
     <div class="container">
-        <!-- Top Bar -->
-        <div class="top-bar">
-            <div class="logo-section">
-                <div class="logo-icon">✈️</div>
-                <div class="logo-text">AVIATOR SIGNALS</div>
-            </div>
-            <div class="status-badge">
-                <div class="pulse-dot"></div>
-                LIVE
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="brand">
+                    <div class="brand-icon">✈️</div>
+                    <div>
+                        <div class="brand-title">Aviator Signals</div>
+                        <div class="brand-subtitle">Pro Edition</div>
+                    </div>
+                </div>
+                <div class="status-indicator">
+                    <div class="status-dot"></div>
+                    <div class="status-text">Live</div>
+                </div>
             </div>
         </div>
 
         <!-- Main Content -->
         <div class="main-content">
             <!-- Control Panel -->
-            <div class="control-panel">
-                <div class="section-title">Control Panel</div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">⚙️</span>
+                    Configuration Panel
+                </div>
 
                 <div class="input-group">
-                    <div class="input-label">🕐 Start Time</div>
-                    <div class="input-wrapper">
-                        <input type="text" class="neon-input" id="startTime" placeholder="00:00:00" maxlength="8">
-                        <button class="paste-button" onclick="handlePaste('startTime')">📋</button>
+                    <label class="input-label">🕐 Start Time</label>
+                    <div class="input-container">
+                        <input type="text" class="input-field" id="startTime" placeholder="00:00:00" maxlength="8">
+                        <button class="paste-btn" onclick="pasteTime('startTime')">📋</button>
                     </div>
                 </div>
 
                 <div class="input-group">
-                    <div class="input-label">🎯 End Time</div>
-                    <div class="input-wrapper">
-                        <input type="text" class="neon-input" id="endTime" placeholder="00:00:00" maxlength="8">
-                        <button class="paste-button" onclick="handlePaste('endTime')">📋</button>
+                    <label class="input-label">🎯 End Time</label>
+                    <div class="input-container">
+                        <input type="text" class="input-field" id="endTime" placeholder="00:00:00" maxlength="8">
+                        <button class="paste-btn" onclick="pasteTime('endTime')">📋</button>
                     </div>
                 </div>
 
                 <div class="input-group">
-                    <div class="input-label">🔢 Signal Count</div>
-                    <input type="number" class="neon-input" id="signalCount" value="10" min="1" max="20" style="width: 100%;">
+                    <label class="input-label">🔢 Number of Signals</label>
+                    <input type="number" class="input-field" id="signalCount" value="10" min="1" max="25">
                 </div>
 
-                <button class="generate-button" onclick="generateSignals()">⚡ Generate Signals</button>
+                <button class="generate-btn" onclick="generateSignals()">
+                    ⚡ Generate Signals
+                </button>
             </div>
 
-            <!-- Results Display -->
-            <div class="results-display">
-                <div class="section-title">Signal Output</div>
+            <!-- Results Panel -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">📊</span>
+                    Generated Signals
+                </div>
 
-                <div id="statsArea" style="display: none;">
-                    <div class="stats-row">
-                        <div class="stat-box">
+                <div id="statsSection" style="display: none;">
+                    <div class="stats-container">
+                        <div class="stat-card">
                             <div class="stat-label">⏱️ Interval</div>
-                            <div class="stat-value" id="intervalStat">--</div>
+                            <div class="stat-value" id="intervalValue">--</div>
                         </div>
-                        <div class="stat-box">
-                            <div class="stat-label">📊 Total</div>
-                            <div class="stat-value" id="totalStat">0</div>
+                        <div class="stat-card">
+                            <div class="stat-label">📈 Total</div>
+                            <div class="stat-value" id="totalValue">0</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="signals-grid" id="signalsGrid">
+                <div class="signals-container" id="signalsList">
                     <div class="empty-state">
                         <div class="empty-icon">🚀</div>
-                        <div class="empty-text">Ready to generate signals</div>
+                        <div class="empty-text">Configure and generate signals to begin</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Floating Clock -->
-    <div class="floating-clock">
-        <div class="clock-time" id="clockTime">00:00:00</div>
-        <div class="clock-date" id="clockDate">Loading...</div>
+    <!-- Clock Widget -->
+    <div class="clock-widget">
+        <div class="clock-time" id="currentTime">00:00:00</div>
+        <div class="clock-date" id="currentDate">Loading...</div>
     </div>
 
     <!-- Toast -->
-    <div class="toast" id="toast"></div>
+    <div class="toast" id="toastMessage"></div>
 
     <script>
-        // Update clock
+        // Clock Update
         function updateClock() {
             const now = new Date();
-            const h = String(now.getHours()).padStart(2, '0');
-            const m = String(now.getMinutes()).padStart(2, '0');
-            const s = String(now.getSeconds()).padStart(2, '0');
-            document.getElementById('clockTime').textContent = `${h}:${m}:${s}`;
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('currentTime').textContent = `${hours}:${minutes}:${seconds}`;
 
-            const opts = { weekday: 'short', month: 'short', day: 'numeric' };
-            document.getElementById('clockDate').textContent = now.toLocaleDateString('en-US', opts);
+            const dateOptions = { weekday: 'short', month: 'short', day: 'numeric' };
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', dateOptions);
         }
+        
         setInterval(updateClock, 1000);
         updateClock();
 
-        // Show toast
-        function showToast(msg) {
-            const toast = document.getElementById('toast');
-            toast.textContent = msg;
+        // Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById('toastMessage');
+            toast.textContent = message;
             toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 2500);
+            setTimeout(() => toast.classList.remove('show'), 2800);
         }
 
-        // Paste handler
-        async function handlePaste(inputId) {
+        // Paste Time Function
+        async function pasteTime(inputId) {
             const input = document.getElementById(inputId);
             try {
                 if (navigator.clipboard && navigator.clipboard.readText) {
                     const text = await navigator.clipboard.readText();
-                    const clean = text.trim();
-                    if (/^\d{1,2}:\d{2}:\d{2}$/.test(clean)) {
-                        input.value = clean;
-                        showToast('✅ Time pasted');
+                    const cleaned = text.trim();
+                    if (/^\d{1,2}:\d{2}:\d{2}$/.test(cleaned)) {
+                        input.value = cleaned;
+                        showToast('✅ Time pasted successfully');
                     } else {
-                        showToast('⚠️ Invalid format');
+                        showToast('⚠️ Invalid time format');
                     }
                 } else {
                     input.focus();
                     input.select();
                 }
-            } catch (err) {
+            } catch (error) {
                 input.focus();
                 input.select();
             }
         }
 
-        // Input formatting
+        // Time Input Formatting
         document.addEventListener('DOMContentLoaded', function() {
             ['startTime', 'endTime'].forEach(id => {
                 const input = document.getElementById(id);
@@ -662,107 +709,106 @@
                     const text = (e.clipboardData || window.clipboardData).getData('text').trim();
                     if (/^\d{1,2}:\d{2}:\d{2}$/.test(text)) {
                         input.value = text;
-                        showToast('✅ Pasted');
+                        showToast('✅ Time pasted');
                     } else {
                         showToast('⚠️ Invalid format');
                     }
                 });
 
                 input.addEventListener('input', function(e) {
-                    let val = e.target.value.replace(/[^\d]/g, '');
-                    if (val.length >= 2) val = val.slice(0, 2) + ':' + val.slice(2);
-                    if (val.length >= 5) val = val.slice(0, 5) + ':' + val.slice(5);
-                    e.target.value = val.slice(0, 8);
+                    let value = e.target.value.replace(/[^\d]/g, '');
+                    if (value.length >= 2) value = value.slice(0, 2) + ':' + value.slice(2);
+                    if (value.length >= 5) value = value.slice(0, 5) + ':' + value.slice(5);
+                    e.target.value = value.slice(0, 8);
                 });
             });
         });
 
-        // Time conversion
-        function timeToSeconds(timeStr) {
-            const [h, m, s] = timeStr.split(':').map(Number);
-            return h * 3600 + m * 60 + s;
+        // Time Conversion Functions
+        function timeToSeconds(timeString) {
+            const [hours, minutes, seconds] = timeString.split(':').map(Number);
+            return hours * 3600 + minutes * 60 + seconds;
         }
 
-        function secondsToTime(totalSec) {
-            const h = Math.floor(totalSec / 3600);
-            const m = Math.floor((totalSec % 3600) / 60);
-            const s = Math.floor(totalSec % 60);
-            return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+        function secondsToTime(totalSeconds) {
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = Math.floor(totalSeconds % 60);
+            return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
         }
 
-        // Generate signals
+        // Generate Signals
         function generateSignals() {
-            const start = document.getElementById('startTime').value;
-            const end = document.getElementById('endTime').value;
-            const count = parseInt(document.getElementById('signalCount').value);
+            const startTime = document.getElementById('startTime').value;
+            const endTime = document.getElementById('endTime').value;
+            const signalCount = parseInt(document.getElementById('signalCount').value);
 
-            if (!start || !end) {
-                showToast('⚠️ Enter start and end times');
+            if (!startTime || !endTime) {
+                showToast('⚠️ Please enter both start and end times');
                 return;
             }
 
-            if (!/^\d{1,2}:\d{2}:\d{2}$/.test(start) || !/^\d{1,2}:\d{2}:\d{2}$/.test(end)) {
-                showToast('⚠️ Invalid time format');
+            if (!/^\d{1,2}:\d{2}:\d{2}$/.test(startTime) || !/^\d{1,2}:\d{2}:\d{2}$/.test(endTime)) {
+                showToast('⚠️ Invalid time format. Use HH:MM:SS');
                 return;
             }
 
-            const startSec = timeToSeconds(start);
-            const endSec = timeToSeconds(end);
+            const startSeconds = timeToSeconds(startTime);
+            const endSeconds = timeToSeconds(endTime);
 
-            if (endSec <= startSec) {
-                showToast('⚠️ End must be after start');
+            if (endSeconds <= startSeconds) {
+                showToast('⚠️ End time must be after start time');
                 return;
             }
 
-            const interval = endSec - startSec;
+            const totalInterval = endSeconds - startSeconds;
             const signals = [];
 
-            for (let i = 0; i < count; i++) {
-                const time = startSec + (interval * i);
-                signals.push(secondsToTime(time));
+            for (let i = 0; i < signalCount; i++) {
+                const timeInSeconds = startSeconds + (totalInterval * i);
+                signals.push(secondsToTime(timeInSeconds));
             }
 
-            renderSignals(signals, interval);
-            showToast('✅ Signals generated!');
+            displaySignals(signals, totalInterval);
+            showToast('✅ Signals generated successfully!');
         }
 
-        // Render signals
-        function renderSignals(signals, interval) {
-            const mins = Math.floor(interval / 60);
-            const secs = Math.floor(interval % 60);
+        // Display Signals
+        function displaySignals(signals, interval) {
+            const intervalMinutes = Math.floor(interval / 60);
+            const intervalSeconds = Math.floor(interval % 60);
 
-            document.getElementById('intervalStat').textContent = `${mins}m ${secs}s`;
-            document.getElementById('totalStat').textContent = signals.length;
-            document.getElementById('statsArea').style.display = 'block';
+            document.getElementById('intervalValue').textContent = `${intervalMinutes}m ${intervalSeconds}s`;
+            document.getElementById('totalValue').textContent = signals.length;
+            document.getElementById('statsSection').style.display = 'block';
 
-            const colors = [
-                { main: '#ff00ff', alpha: 'rgba(255, 0, 255, 0.3)' },
-                { main: '#00ffff', alpha: 'rgba(0, 255, 255, 0.3)' },
-                { main: '#ffff00', alpha: 'rgba(255, 255, 0, 0.3)' }
+            const colorSets = [
+                { color: '#ff00ff', shadow: 'rgba(255, 0, 255, 0.3)' },
+                { color: '#00ffff', shadow: 'rgba(0, 255, 255, 0.3)' },
+                { color: '#ffff00', shadow: 'rgba(255, 255, 0, 0.3)' }
             ];
             
-            const grid = document.getElementById('signalsGrid');
-
-            grid.innerHTML = signals.map((time, idx) => {
-                const color = colors[idx % 3];
+            const signalsList = document.getElementById('signalsList');
+            signalsList.innerHTML = signals.map((time, index) => {
+                const colorSet = colorSets[index % 3];
                 return `
-                    <div class="signal-item" id="signal-${idx}" 
-                         onclick="toggleSignal(${idx})" 
-                         style="--glow-color: ${color.main}; --glow-color-alpha: ${color.alpha};">
-                        <div class="signal-index">${idx + 1}</div>
+                    <div class="signal-card" id="signal-${index}" 
+                         onclick="toggleSignalCheck(${index})" 
+                         style="--signal-color: ${colorSet.color}; --signal-shadow: ${colorSet.shadow};">
+                        <div class="signal-number">${index + 1}</div>
                         <div class="signal-time">${time}</div>
-                        <div class="signal-check">
-                            <div class="check-mark"></div>
+                        <div class="signal-checkbox">
+                            <div class="checkmark"></div>
                         </div>
                     </div>
                 `;
             }).join('');
         }
 
-        // Toggle signal
-        function toggleSignal(idx) {
-            const signal = document.getElementById(`signal-${idx}`);
-            signal.classList.toggle('active');
+        // Toggle Signal Check
+        function toggleSignalCheck(index) {
+            const signalCard = document.getElementById(`signal-${index}`);
+            signalCard.classList.toggle('checked');
         }
     </script>
 </body>
