@@ -8,6 +8,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Aviator Signals Pro</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -16,7 +18,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            background: #000000;
             min-height: 100vh;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 0;
@@ -25,25 +27,35 @@
             color: #fff;
         }
 
-        /* Grid Background */
+        /* Dark Animated Background */
         .bg-animation {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
+            background: 
+                radial-gradient(ellipse at top, #1a1a2e 0%, #000000 50%),
+                radial-gradient(ellipse at bottom, #16213e 0%, #000000 50%);
             pointer-events: none;
             z-index: 0;
-            animation: gridMove 20s linear infinite;
         }
 
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(40px, 40px); }
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(6, 214, 160, 0.03) 2px, rgba(6, 214, 160, 0.03) 4px);
+            animation: gridScroll 20s linear infinite;
+        }
+
+        @keyframes gridScroll {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(50px); }
         }
 
         .container {
@@ -52,13 +64,13 @@
             z-index: 1;
         }
 
-        /* Header */
+        /* Sleek Header */
         .header {
-            background: rgba(15, 20, 45, 0.9);
+            background: rgba(10, 10, 15, 0.95);
             backdrop-filter: blur(20px);
-            padding: 24px 28px;
-            border-bottom: 2px solid rgba(0, 255, 255, 0.2);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            padding: 20px 28px;
+            border-bottom: 1px solid rgba(6, 214, 160, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
 
         .header-content {
@@ -76,37 +88,45 @@
         }
 
         .brand-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #00d4ff, #0099ff);
-            border-radius: 12px;
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #06d6a0, #1b9aaa);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
-            animation: iconPulse 2s ease-in-out infinite;
+            font-size: 22px;
+            box-shadow: 0 0 20px rgba(6, 214, 160, 0.4);
+            position: relative;
         }
 
-        @keyframes iconPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        .brand-icon::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 10px;
+            padding: 2px;
+            background: linear-gradient(135deg, #06d6a0, #1b9aaa);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.5;
         }
 
         .brand-title {
-            font-size: 22px;
-            font-weight: 800;
+            font-size: 20px;
+            font-weight: 900;
             color: #fff;
-            text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif;
             letter-spacing: 1px;
         }
 
         .brand-subtitle {
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.5);
-            font-weight: 600;
+            font-size: 9px;
+            color: #06d6a0;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             margin-top: 2px;
         }
 
@@ -114,276 +134,263 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            background: rgba(0, 255, 136, 0.15);
-            border: 1px solid rgba(0, 255, 136, 0.3);
+            background: rgba(6, 214, 160, 0.1);
+            border: 1px solid rgba(6, 214, 160, 0.3);
             padding: 8px 16px;
-            border-radius: 25px;
+            border-radius: 20px;
         }
 
         .status-dot {
-            width: 10px;
-            height: 10px;
-            background: #00ff88;
+            width: 8px;
+            height: 8px;
+            background: #06d6a0;
             border-radius: 50%;
-            box-shadow: 0 0 10px #00ff88;
-            animation: statusPulse 1.5s ease-in-out infinite;
+            box-shadow: 0 0 10px #06d6a0;
+            animation: statusPulse 2s ease-in-out infinite;
         }
 
         @keyframes statusPulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.2); }
         }
 
         .status-text {
-            font-size: 12px;
-            font-weight: 700;
-            color: #00ff88;
+            font-size: 11px;
+            font-weight: 800;
+            color: #06d6a0;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-family: 'Orbitron', sans-serif;
         }
 
         /* Main Content */
         .main-content {
-            padding: 28px 24px;
+            padding: 28px 24px 100px;
             max-width: 600px;
             margin: 0 auto;
         }
 
-        /* Card Style */
-        .card {
-            background: rgba(20, 30, 60, 0.6);
-            backdrop-filter: blur(15px);
-            border-radius: 20px;
-            padding: 32px;
-            margin-bottom: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-        }
-
+        /* Modern Control Panel */
         .control-card {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 153, 255, 0.05));
-            backdrop-filter: blur(15px);
-            border-radius: 24px;
-            padding: 0;
+            background: rgba(15, 15, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
             margin-bottom: 24px;
-            border: 2px solid rgba(0, 212, 255, 0.3);
-            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.6);
             overflow: hidden;
-        }
-
-        .control-header {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 153, 255, 0.15));
-            padding: 20px 28px;
-            border-bottom: 1px solid rgba(0, 212, 255, 0.3);
-        }
-
-        .control-title {
-            font-size: 16px;
-            font-weight: 900;
-            color: #00d4ff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .control-icon {
-            font-size: 24px;
-            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.6));
-        }
-
-        .control-body {
-            padding: 32px 28px;
-        }
-
-        .card-header {
-            font-size: 13px;
-            font-weight: 800;
-            color: #00d4ff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 28px;
-            padding-bottom: 16px;
-            border-bottom: 2px solid rgba(0, 212, 255, 0.2);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .card-icon {
-            font-size: 20px;
-        }
-
-        /* Input Groups */
-        .input-group {
-            margin-bottom: 24px;
-        }
-
-        .input-label {
-            font-size: 12px;
-            font-weight: 700;
-            color: #00d4ff;
-            margin-bottom: 12px;
-            display: block;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .input-container {
-            display: flex;
-            gap: 12px;
-        }
-
-        .input-field {
-            flex: 1;
-            background: rgba(10, 15, 35, 0.8);
-            border: 2px solid rgba(0, 212, 255, 0.3);
-            border-radius: 14px;
-            padding: 18px 20px;
-            font-size: 20px;
-            font-family: 'Courier New', monospace;
-            font-weight: 700;
-            color: #00d4ff;
-            letter-spacing: 2px;
-            transition: all 0.3s;
-            text-align: center;
-        }
-
-        .input-field:focus {
-            outline: none;
-            border-color: #00d4ff;
-            box-shadow: 0 0 25px rgba(0, 212, 255, 0.3);
-            background: rgba(10, 15, 35, 1);
-        }
-
-        .input-field::placeholder {
-            color: rgba(0, 212, 255, 0.3);
-        }
-
-        .input-field[type="number"] {
-            font-size: 24px;
-        }
-
-        .paste-btn {
-            width: 58px;
-            height: 58px;
-            background: linear-gradient(135deg, #00d4ff, #0099ff);
-            border: none;
-            border-radius: 14px;
-            font-size: 24px;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
-        }
-
-        .paste-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
-        }
-
-        .paste-btn:active {
-            transform: scale(0.95);
-        }
-
-        /* Generate Button */
-        .generate-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #00d4ff, #0099ff);
-            border: none;
-            border-radius: 16px;
-            padding: 20px;
-            font-size: 16px;
-            font-weight: 900;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
-            margin-top: 32px;
             position: relative;
-            overflow: hidden;
         }
 
-        .generate-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .generate-btn:hover::before {
-            left: 100%;
-        }
-
-        .generate-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(0, 212, 255, 0.5);
-        }
-
-        .generate-btn:active {
-            transform: translateY(0);
-        }
-
-        .generate-btn-inline {
-            background: linear-gradient(135deg, #00d4ff, #0099ff);
-            border: none;
-            border-radius: 14px;
-            padding: 18px 28px;
-            font-size: 14px;
-            font-weight: 900;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
-            white-space: nowrap;
-        }
-
-        .generate-btn-inline:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
-        }
-
-        .generate-btn-inline:active {
-            transform: scale(0.95);
-        }
-
-        /* Stats */
-        .stats-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin-bottom: 28px;
-        }
-
-        .stat-card {
-            background: rgba(10, 15, 35, 0.8);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            border-radius: 16px;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card::after {
+        .control-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+            background: linear-gradient(90deg, #06d6a0, #1b9aaa, #ef476f);
+            opacity: 0.8;
+        }
+
+        .control-header {
+            padding: 24px 28px;
+            background: rgba(6, 214, 160, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .control-title {
+            font-size: 14px;
+            font-weight: 900;
+            color: #06d6a0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .control-icon {
+            font-size: 20px;
+            filter: drop-shadow(0 0 10px rgba(6, 214, 160, 0.6));
+        }
+
+        .control-body {
+            padding: 28px;
+        }
+
+        /* Input Groups */
+        .input-group {
+            margin-bottom: 22px;
+        }
+
+        .input-label {
+            font-size: 11px;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .label-icon {
+            font-size: 14px;
+        }
+
+        .input-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .input-field {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(6, 214, 160, 0.2);
+            border-radius: 12px;
+            padding: 16px 18px;
+            font-size: 20px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            color: #06d6a0;
+            letter-spacing: 3px;
+            transition: all 0.3s;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #06d6a0;
+            box-shadow: 0 0 20px rgba(6, 214, 160, 0.3);
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .input-field::placeholder {
+            color: rgba(6, 214, 160, 0.2);
+        }
+
+        .paste-btn {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, #06d6a0, #1b9aaa);
+            border: none;
+            border-radius: 12px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(6, 214, 160, 0.3);
+            position: relative;
+        }
+
+        .paste-btn::before {
+            content: '📎';
+            font-size: 20px;
+        }
+
+        .paste-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(6, 214, 160, 0.5);
+        }
+
+        .paste-btn:active {
+            transform: scale(0.95);
+        }
+
+        .generate-btn-inline {
+            background: linear-gradient(135deg, #ef476f, #ff6b9d);
+            border: none;
+            border-radius: 12px;
+            padding: 16px 24px;
+            font-size: 13px;
+            font-weight: 900;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(239, 71, 111, 0.4);
+            white-space: nowrap;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .generate-btn-inline:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(239, 71, 111, 0.6);
+        }
+
+        .generate-btn-inline:active {
+            transform: scale(0.95);
+        }
+
+        /* Results Panel */
+        .results-card {
+            background: rgba(15, 15, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+        }
+
+        .results-header {
+            padding: 24px 28px;
+            background: rgba(27, 154, 170, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .results-title {
+            font-size: 14px;
+            font-weight: 900;
+            color: #1b9aaa;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .results-icon {
+            font-size: 20px;
+            filter: drop-shadow(0 0 10px rgba(27, 154, 170, 0.6));
+        }
+
+        .results-body {
+            padding: 28px;
+        }
+
+        /* Stats */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .stat-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 14px;
+            padding: 18px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--stat-color), transparent);
             animation: shimmer 3s linear infinite;
         }
 
@@ -393,20 +400,24 @@
         }
 
         .stat-label {
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.5);
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.4);
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
 
         .stat-value {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 900;
-            color: #00d4ff;
-            font-family: 'Courier New', monospace;
-            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+            color: var(--stat-color);
+            font-family: 'Orbitron', monospace;
+            text-shadow: 0 0 20px var(--stat-glow);
         }
 
         /* Signals List */
@@ -417,7 +428,7 @@
         }
 
         .signals-container::-webkit-scrollbar {
-            width: 6px;
+            width: 4px;
         }
 
         .signals-container::-webkit-scrollbar-track {
@@ -425,15 +436,16 @@
         }
 
         .signals-container::-webkit-scrollbar-thumb {
-            background: rgba(0, 212, 255, 0.3);
+            background: rgba(6, 214, 160, 0.3);
             border-radius: 10px;
         }
 
         .signal-card {
-            background: rgba(10, 15, 35, 0.4);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            border-radius: 12px;
-            padding: 12px 50px 12px 16px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-left: 3px solid var(--signal-color);
+            border-radius: 10px;
+            padding: 14px 50px 14px 18px;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
@@ -444,45 +456,47 @@
         }
 
         .signal-card:hover {
-            border-color: rgba(0, 212, 255, 0.5);
-            background: rgba(10, 15, 35, 0.6);
+            border-left-width: 5px;
+            background: rgba(0, 0, 0, 0.6);
             transform: translateX(4px);
+            box-shadow: 0 4px 20px var(--signal-shadow);
         }
 
         .signal-card.checked {
-            background: rgba(0, 212, 255, 0.1);
+            background: var(--signal-bg);
             border-color: var(--signal-color);
-            box-shadow: 0 0 15px var(--signal-shadow);
+            box-shadow: 0 0 20px var(--signal-shadow);
         }
 
         .signal-number {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, var(--signal-color), rgba(0, 153, 255, 0.8));
-            border-radius: 10px;
+            width: 32px;
+            height: 32px;
+            background: var(--signal-color);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 900;
-            font-size: 16px;
-            color: #fff;
+            font-size: 14px;
+            color: #000;
             flex-shrink: 0;
-            box-shadow: 0 2px 10px rgba(0, 212, 255, 0.3);
+            box-shadow: 0 2px 10px var(--signal-shadow);
+            font-family: 'Orbitron', sans-serif;
         }
 
         .signal-time {
             flex: 1;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 900;
-            font-family: 'Courier New', monospace;
-            color: #00d4ff;
+            font-family: 'Orbitron', monospace;
+            color: var(--signal-color);
             letter-spacing: 2px;
         }
 
         .signal-checkbox {
-            width: 24px;
-            height: 24px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            width: 22px;
+            height: 22px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
             border-radius: 6px;
             display: flex;
             align-items: center;
@@ -490,18 +504,19 @@
             transition: all 0.3s;
             flex-shrink: 0;
             position: absolute;
-            right: 16px;
+            right: 18px;
         }
 
         .signal-card.checked .signal-checkbox {
             background: var(--signal-color);
             border-color: var(--signal-color);
+            box-shadow: 0 0 15px var(--signal-shadow);
         }
 
         .checkmark {
-            width: 12px;
-            height: 12px;
-            border: 2px solid #fff;
+            width: 10px;
+            height: 10px;
+            border: 2px solid #000;
             border-top: none;
             border-left: none;
             transform: rotate(45deg) translateY(-1px);
@@ -516,24 +531,24 @@
         /* Empty State */
         .empty-state {
             text-align: center;
-            padding: 80px 20px;
+            padding: 70px 20px;
         }
 
         .empty-icon {
-            font-size: 72px;
-            margin-bottom: 20px;
-            opacity: 0.2;
+            font-size: 64px;
+            margin-bottom: 16px;
+            opacity: 0.15;
             animation: floatAnimation 4s ease-in-out infinite;
         }
 
         @keyframes floatAnimation {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-15px); }
         }
 
         .empty-text {
-            font-size: 15px;
-            color: rgba(255, 255, 255, 0.4);
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.3);
             font-weight: 600;
         }
 
@@ -542,28 +557,28 @@
             position: fixed;
             bottom: 24px;
             right: 24px;
-            background: rgba(20, 30, 60, 0.95);
+            background: rgba(10, 10, 15, 0.95);
             backdrop-filter: blur(20px);
-            border: 2px solid rgba(0, 212, 255, 0.3);
-            border-radius: 18px;
-            padding: 16px 24px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(6, 214, 160, 0.3);
+            border-radius: 16px;
+            padding: 14px 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
             z-index: 999;
         }
 
         .clock-time {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 900;
-            color: #00d4ff;
-            font-family: 'Courier New', monospace;
+            color: #06d6a0;
+            font-family: 'Orbitron', monospace;
             letter-spacing: 2px;
-            text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
-            margin-bottom: 6px;
+            text-shadow: 0 0 15px rgba(6, 214, 160, 0.5);
+            margin-bottom: 4px;
         }
 
         .clock-date {
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.5);
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.4);
             font-weight: 700;
             text-align: center;
             text-transform: uppercase;
@@ -576,16 +591,17 @@
             bottom: 100px;
             left: 50%;
             transform: translateX(-50%) translateY(120px);
-            background: linear-gradient(135deg, #00d4ff, #0099ff);
-            color: #fff;
-            padding: 16px 36px;
-            border-radius: 30px;
-            font-size: 14px;
-            font-weight: 800;
+            background: linear-gradient(135deg, #06d6a0, #1b9aaa);
+            color: #000;
+            padding: 14px 32px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 900;
             opacity: 0;
             transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             z-index: 1000;
-            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.5);
+            box-shadow: 0 10px 40px rgba(6, 214, 160, 0.5);
+            font-family: 'Orbitron', sans-serif;
         }
 
         .toast.show {
@@ -596,25 +612,25 @@
         /* Responsive */
         @media (max-width: 480px) {
             .header {
-                padding: 20px 20px;
+                padding: 18px 20px;
             }
 
             .brand-title {
-                font-size: 18px;
+                font-size: 17px;
             }
 
             .main-content {
-                padding: 20px 16px;
+                padding: 20px 16px 100px;
             }
 
-            .card {
+            .control-body, .results-body {
                 padding: 24px 20px;
             }
 
             .clock-widget {
                 bottom: 20px;
                 right: 20px;
-                padding: 12px 18px;
+                padding: 12px 16px;
             }
         }
     </style>
@@ -629,13 +645,13 @@
                 <div class="brand">
                     <div class="brand-icon">✈️</div>
                     <div>
-                        <div class="brand-title">Aviator Signals</div>
-                        <div class="brand-subtitle">Pro Edition</div>
+                        <div class="brand-title">AVIATOR</div>
+                        <div class="brand-subtitle">SIGNALS PRO</div>
                     </div>
                 </div>
                 <div class="status-indicator">
                     <div class="status-dot"></div>
-                    <div class="status-text">Live</div>
+                    <div class="status-text">LIVE</div>
                 </div>
             </div>
         </div>
@@ -646,33 +662,42 @@
             <div class="control-card">
                 <div class="control-header">
                     <div class="control-title">
-                        <span class="control-icon">⚙️</span>
-                        Configuration Panel
+                        <span class="control-icon">⚡</span>
+                        SIGNAL GENERATOR
                     </div>
                 </div>
                 <div class="control-body">
                     <div class="input-group">
-                        <label class="input-label">🕐 Start Time</label>
+                        <label class="input-label">
+                            <span class="label-icon">▶️</span>
+                            START TIME
+                        </label>
                         <div class="input-container">
                             <input type="text" class="input-field" id="startTime" placeholder="00:00:00" maxlength="8">
-                            <button class="paste-btn" onclick="pasteTime('startTime')">📋</button>
+                            <button class="paste-btn" onclick="pasteTime('startTime')"></button>
                         </div>
                     </div>
 
                     <div class="input-group">
-                        <label class="input-label">🎯 End Time</label>
+                        <label class="input-label">
+                            <span class="label-icon">⏹️</span>
+                            END TIME
+                        </label>
                         <div class="input-container">
                             <input type="text" class="input-field" id="endTime" placeholder="00:00:00" maxlength="8">
-                            <button class="paste-btn" onclick="pasteTime('endTime')">📋</button>
+                            <button class="paste-btn" onclick="pasteTime('endTime')"></button>
                         </div>
                     </div>
 
                     <div class="input-group">
-                        <label class="input-label">🔢 Number of Signals</label>
+                        <label class="input-label">
+                            <span class="label-icon">🎯</span>
+                            SIGNAL COUNT
+                        </label>
                         <div class="input-container">
                             <input type="number" class="input-field" id="signalCount" value="10" min="1" max="25" style="text-align: center;">
                             <button class="generate-btn-inline" onclick="generateSignals()">
-                                ⚡ Generate
+                                🚀 GENERATE
                             </button>
                         </div>
                     </div>
@@ -680,29 +705,32 @@
             </div>
 
             <!-- Results Panel -->
-            <div class="card">
-                <div class="card-header">
-                    <span class="card-icon">📊</span>
-                    Generated Signals
-                </div>
-
-                <div id="statsSection" style="display: none;">
-                    <div class="stats-container">
-                        <div class="stat-card">
-                            <div class="stat-label">⏱️ Interval</div>
-                            <div class="stat-value" id="intervalValue">--</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-label">📈 Total</div>
-                            <div class="stat-value" id="totalValue">0</div>
-                        </div>
+            <div class="results-card">
+                <div class="results-header">
+                    <div class="results-title">
+                        <span class="results-icon">📡</span>
+                        SIGNAL OUTPUT
                     </div>
                 </div>
+                <div class="results-body">
+                    <div id="statsSection" style="display: none;">
+                        <div class="stats-container">
+                            <div class="stat-card" style="--stat-color: #06d6a0; --stat-glow: rgba(6, 214, 160, 0.5);">
+                                <div class="stat-label">⏱️ INTERVAL</div>
+                                <div class="stat-value" id="intervalValue">--</div>
+                            </div>
+                            <div class="stat-card" style="--stat-color: #1b9aaa; --stat-glow: rgba(27, 154, 170, 0.5);">
+                                <div class="stat-label">📊 TOTAL</div>
+                                <div class="stat-value" id="totalValue">0</div>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="signals-container" id="signalsList">
-                    <div class="empty-state">
-                        <div class="empty-icon">🚀</div>
-                        <div class="empty-text">Configure and generate signals to begin</div>
+                    <div class="signals-container" id="signalsList">
+                        <div class="empty-state">
+                            <div class="empty-icon">🎯</div>
+                            <div class="empty-text">Configure parameters and generate signals</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -751,9 +779,9 @@
                     const cleaned = text.trim();
                     if (/^\d{1,2}:\d{2}:\d{2}$/.test(cleaned)) {
                         input.value = cleaned;
-                        showToast('✅ Time pasted successfully');
+                        showToast('✅ TIME PASTED');
                     } else {
-                        showToast('⚠️ Invalid time format');
+                        showToast('⚠️ INVALID FORMAT');
                     }
                 } else {
                     input.focus();
@@ -775,9 +803,9 @@
                     const text = (e.clipboardData || window.clipboardData).getData('text').trim();
                     if (/^\d{1,2}:\d{2}:\d{2}$/.test(text)) {
                         input.value = text;
-                        showToast('✅ Time pasted');
+                        showToast('✅ PASTED');
                     } else {
-                        showToast('⚠️ Invalid format');
+                        showToast('⚠️ INVALID FORMAT');
                     }
                 });
 
@@ -810,12 +838,12 @@
             const signalCount = parseInt(document.getElementById('signalCount').value);
 
             if (!startTime || !endTime) {
-                showToast('⚠️ Please enter both start and end times');
+                showToast('⚠️ ENTER BOTH TIMES');
                 return;
             }
 
             if (!/^\d{1,2}:\d{2}:\d{2}$/.test(startTime) || !/^\d{1,2}:\d{2}:\d{2}$/.test(endTime)) {
-                showToast('⚠️ Invalid time format. Use HH:MM:SS');
+                showToast('⚠️ INVALID TIME FORMAT');
                 return;
             }
 
@@ -823,7 +851,7 @@
             const endSeconds = timeToSeconds(endTime);
 
             if (endSeconds <= startSeconds) {
-                showToast('⚠️ End time must be after start time');
+                showToast('⚠️ END MUST BE AFTER START');
                 return;
             }
 
@@ -836,7 +864,7 @@
             }
 
             displaySignals(signals, totalInterval);
-            showToast('✅ Signals generated successfully!');
+            showToast('✅ SIGNALS GENERATED!');
         }
 
         // Display Signals
@@ -849,9 +877,21 @@
             document.getElementById('statsSection').style.display = 'block';
 
             const colorSets = [
-                { color: '#ff00ff', shadow: 'rgba(255, 0, 255, 0.3)' },
-                { color: '#00ffff', shadow: 'rgba(0, 255, 255, 0.3)' },
-                { color: '#ffff00', shadow: 'rgba(255, 255, 0, 0.3)' }
+                { 
+                    color: '#06d6a0', 
+                    shadow: 'rgba(6, 214, 160, 0.3)',
+                    bg: 'rgba(6, 214, 160, 0.1)'
+                },
+                { 
+                    color: '#1b9aaa', 
+                    shadow: 'rgba(27, 154, 170, 0.3)',
+                    bg: 'rgba(27, 154, 170, 0.1)'
+                },
+                { 
+                    color: '#ef476f', 
+                    shadow: 'rgba(239, 71, 111, 0.3)',
+                    bg: 'rgba(239, 71, 111, 0.1)'
+                }
             ];
             
             const signalsList = document.getElementById('signalsList');
@@ -860,7 +900,7 @@
                 return `
                     <div class="signal-card" id="signal-${index}" 
                          onclick="toggleSignalCheck(${index})" 
-                         style="--signal-color: ${colorSet.color}; --signal-shadow: ${colorSet.shadow};">
+                         style="--signal-color: ${colorSet.color}; --signal-shadow: ${colorSet.shadow}; --signal-bg: ${colorSet.bg};">
                         <div class="signal-number">${index + 1}</div>
                         <div class="signal-time">${time}</div>
                         <div class="signal-checkbox">
