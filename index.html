@@ -296,6 +296,31 @@
             transform: translateY(0);
         }
 
+        .generate-btn-inline {
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            border: none;
+            border-radius: 14px;
+            padding: 18px 28px;
+            font-size: 14px;
+            font-weight: 900;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
+            white-space: nowrap;
+        }
+
+        .generate-btn-inline:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .generate-btn-inline:active {
+            transform: scale(0.95);
+        }
+
         /* Stats */
         .stats-container {
             display: grid;
@@ -605,12 +630,13 @@
 
                 <div class="input-group">
                     <label class="input-label">🔢 Number of Signals</label>
-                    <input type="number" class="input-field" id="signalCount" value="10" min="1" max="25">
+                    <div class="input-container">
+                        <input type="number" class="input-field" id="signalCount" value="10" min="1" max="25" style="text-align: center;">
+                        <button class="generate-btn-inline" onclick="generateSignals()">
+                            ⚡ Generate
+                        </button>
+                    </div>
                 </div>
-
-                <button class="generate-btn" onclick="generateSignals()">
-                    ⚡ Generate Signals
-                </button>
             </div>
 
             <!-- Results Panel -->
