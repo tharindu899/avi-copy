@@ -160,6 +160,43 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
         }
 
+        .control-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 153, 255, 0.05));
+            backdrop-filter: blur(15px);
+            border-radius: 24px;
+            padding: 0;
+            margin-bottom: 24px;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
+            overflow: hidden;
+        }
+
+        .control-header {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 153, 255, 0.15));
+            padding: 20px 28px;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .control-title {
+            font-size: 16px;
+            font-weight: 900;
+            color: #00d4ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .control-icon {
+            font-size: 24px;
+            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.6));
+        }
+
+        .control-body {
+            padding: 32px 28px;
+        }
+
         .card-header {
             font-size: 13px;
             font-weight: 800;
@@ -184,9 +221,9 @@
         }
 
         .input-label {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
-            color: rgba(255, 255, 255, 0.7);
+            color: #00d4ff;
             margin-bottom: 12px;
             display: block;
             text-transform: uppercase;
@@ -606,35 +643,38 @@
         <!-- Main Content -->
         <div class="main-content">
             <!-- Control Panel -->
-            <div class="card">
-                <div class="card-header">
-                    <span class="card-icon">⚙️</span>
-                    Configuration Panel
-                </div>
-
-                <div class="input-group">
-                    <label class="input-label">🕐 Start Time</label>
-                    <div class="input-container">
-                        <input type="text" class="input-field" id="startTime" placeholder="00:00:00" maxlength="8">
-                        <button class="paste-btn" onclick="pasteTime('startTime')">📋</button>
+            <div class="control-card">
+                <div class="control-header">
+                    <div class="control-title">
+                        <span class="control-icon">⚙️</span>
+                        Configuration Panel
                     </div>
                 </div>
-
-                <div class="input-group">
-                    <label class="input-label">🎯 End Time</label>
-                    <div class="input-container">
-                        <input type="text" class="input-field" id="endTime" placeholder="00:00:00" maxlength="8">
-                        <button class="paste-btn" onclick="pasteTime('endTime')">📋</button>
+                <div class="control-body">
+                    <div class="input-group">
+                        <label class="input-label">🕐 Start Time</label>
+                        <div class="input-container">
+                            <input type="text" class="input-field" id="startTime" placeholder="00:00:00" maxlength="8">
+                            <button class="paste-btn" onclick="pasteTime('startTime')">📋</button>
+                        </div>
                     </div>
-                </div>
 
-                <div class="input-group">
-                    <label class="input-label">🔢 Number of Signals</label>
-                    <div class="input-container">
-                        <input type="number" class="input-field" id="signalCount" value="10" min="1" max="25" style="text-align: center;">
-                        <button class="generate-btn-inline" onclick="generateSignals()">
-                            ⚡ Generate
-                        </button>
+                    <div class="input-group">
+                        <label class="input-label">🎯 End Time</label>
+                        <div class="input-container">
+                            <input type="text" class="input-field" id="endTime" placeholder="00:00:00" maxlength="8">
+                            <button class="paste-btn" onclick="pasteTime('endTime')">📋</button>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label">🔢 Number of Signals</label>
+                        <div class="input-container">
+                            <input type="number" class="input-field" id="signalCount" value="10" min="1" max="25" style="text-align: center;">
+                            <button class="generate-btn-inline" onclick="generateSignals()">
+                                ⚡ Generate
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
